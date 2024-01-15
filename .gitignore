@@ -38,5 +38,5 @@ out/
 
 .DS_Store
 
-*.yml
+application.yml
 application.properties
