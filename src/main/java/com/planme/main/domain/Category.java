@@ -37,4 +37,12 @@ public class Category extends BaseEntity {
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<MeContent> meContentList = new ArrayList<>();
+
+    public void setMember(Member member) {
+        if (member != null) {
+            member.getCategoryList().remove(this);
+        }
+        this.member = member;
+        member.getCategoryList().add(this);
+    }
 }
