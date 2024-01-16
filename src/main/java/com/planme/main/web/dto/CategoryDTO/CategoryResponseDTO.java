@@ -15,4 +15,14 @@ public class CategoryResponseDTO {
         LocalDateTime createdAt;
     }
 
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class DeleteCategoryResultDTO {
+        Long categoryId;
+        LocalDateTime deletedAt;
+    }
+
+
 }

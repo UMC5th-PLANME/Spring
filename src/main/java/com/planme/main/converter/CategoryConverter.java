@@ -22,4 +22,12 @@ public class CategoryConverter {
                 .color(request.getColor())
                 .build();
     }
+
+    public static CategoryResponseDTO.DeleteCategoryResultDTO toDeleteResultDTO(Category category) {
+        return CategoryResponseDTO.DeleteCategoryResultDTO.builder()
+                .categoryId(category.getId())
+                .deletedAt(LocalDateTime.now())
+                .build();
+    }
+
 }
