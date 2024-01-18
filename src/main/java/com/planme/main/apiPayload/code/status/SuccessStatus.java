@@ -17,7 +17,8 @@ public enum SuccessStatus implements BaseCode {
 
     // 카테고리 관련 응답
     CATEGORY_CREATED(HttpStatus.OK,"CATEGORY2001","카테고리가 추가되었습니다."),
-    CATEGORY_DELETED(HttpStatus.OK,"CATEGORY2002","카테고리가 삭제되었습니다.");
+    CATEGORY_DELETED(HttpStatus.OK,"CATEGORY2002","카테고리가 삭제되었습니다."),
+    CATEGORY_UPDATED(HttpStatus.OK,"CATEGORY2003","카테고리가 수정되었습니다.");
 
 
     private final HttpStatus httpStatus;

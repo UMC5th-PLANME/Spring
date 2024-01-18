@@ -39,4 +39,12 @@ public class CategoryRestController {
     public ApiResponse<CategoryResponseDTO.DeleteCategoryResultDTO> deleteCategory(@PathVariable(name = "categoryId") Long id){
         return ApiResponse.of(SuccessStatus.CATEGORY_DELETED, categoryCommandService.deleteCategory(id));
     }
+
+    @PatchMapping("/{categoryId}")
+    public ApiResponse<CategoryResponseDTO.UpdateCategoryResultDTO> updateCategory(@PathVariable(name = "categoryId") Long id, @RequestBody CategoryRequestDTO.UpdateCategoryDto request) {
+        Category category = categoryCommandService.updateCategory(id, request);
+        return ApiResponse.of(SuccessStatus.CATEGORY_UPDATED, CategoryConverter.toUpdateResultDTO(category));
+    }
+
+
 }

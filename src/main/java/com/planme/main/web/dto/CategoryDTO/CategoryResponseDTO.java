@@ -24,5 +24,13 @@ public class CategoryResponseDTO {
         LocalDateTime deletedAt;
     }
 
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class UpdateCategoryResultDTO {
+        Long categoryId;
+        LocalDateTime updatedAt;
+    }
 
 }

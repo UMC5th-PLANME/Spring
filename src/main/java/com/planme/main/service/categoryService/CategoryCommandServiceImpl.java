@@ -58,4 +58,24 @@ public class CategoryCommandServiceImpl implements CategoryCommandService {
 
         return deleteCategoryResultDTO;
     }
+
+    @Override
+    @Transactional
+    public Category updateCategory(Long id, CategoryRequestDTO.UpdateCategoryDto request) {
+
+        Member member = memberRepository.findById(1L).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
+        Category category = categoryRepository.findByIdAndMemberId(id, member.getId()).orElseThrow(() -> new CategoryHandler(ErrorStatus.CATEGORY_NOT_FOUND));
+
+        if (request.getName() != null) {
+            category.setName(request.getName());
+        }
+        if (request.getEmoticon() != null) {
+            category.setEmoticon(request.getEmoticon());
+        }
+        if (request.getColor() != null) {
+            category.setColor(request.getColor());
+        }
+
+        return category;
+    }
 }

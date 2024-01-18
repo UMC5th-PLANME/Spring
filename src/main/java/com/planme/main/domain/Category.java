@@ -2,6 +2,7 @@ package com.planme.main.domain;
 
 import com.planme.main.domain.common.BaseEntity;
 import com.planme.main.domain.mapping.MeContent;
+import com.planme.main.web.dto.CategoryDTO.CategoryRequestDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -45,4 +47,5 @@ public class Category extends BaseEntity {
         this.member = member;
         member.getCategoryList().add(this);
     }
+
 }

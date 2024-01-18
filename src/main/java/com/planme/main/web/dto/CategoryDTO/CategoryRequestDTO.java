@@ -12,5 +12,14 @@ public class CategoryRequestDTO {
         private String color;
 
     }
+    @Getter
+    public static class UpdateCategoryDto {
+
+        private String name;
+        private String emoticon;
+        private String color;
+
+    }
+
 
 }

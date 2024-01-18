@@ -15,13 +15,7 @@ public class CategoryConverter {
                 .build();
     }
 
-    public static Category toCategory(CategoryRequestDTO.CreateCategoryDto request) {
-        return Category.builder()
-                .name(request.getName())
-                .emoticon(request.getEmoticon())
-                .color(request.getColor())
-                .build();
-    }
+
 
     public static CategoryResponseDTO.DeleteCategoryResultDTO toDeleteResultDTO(Category category) {
         return CategoryResponseDTO.DeleteCategoryResultDTO.builder()
@@ -30,4 +24,18 @@ public class CategoryConverter {
                 .build();
     }
 
+    public static CategoryResponseDTO.UpdateCategoryResultDTO toUpdateResultDTO(Category category) {
+        return CategoryResponseDTO.UpdateCategoryResultDTO.builder()
+                .categoryId(category.getId())
+                .updatedAt(LocalDateTime.now())
+                .build();
+    }
+
+    public static Category toCategory(CategoryRequestDTO.CreateCategoryDto request) {
+        return Category.builder()
+                .name(request.getName())
+                .emoticon(request.getEmoticon())
+                .color(request.getColor())
+                .build();
+    }
 }

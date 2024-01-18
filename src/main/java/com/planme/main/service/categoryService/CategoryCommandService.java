@@ -9,4 +9,7 @@ public interface CategoryCommandService {
     Category createCategory(CategoryRequestDTO.CreateCategoryDto request);
 
     CategoryResponseDTO.DeleteCategoryResultDTO deleteCategory(Long id);
+
+    Category updateCategory(Long id, CategoryRequestDTO.UpdateCategoryDto request);
+
 }
