@@ -31,6 +31,14 @@ public class CategoryConverter {
                 .build();
     }
 
+    public static CategoryResponseDTO.ChangeStatusCategoryResultDTO toChangeStatusResultDTO(Category category) {
+        return CategoryResponseDTO.ChangeStatusCategoryResultDTO.builder()
+                .categoryId(category.getId())
+                .meStoryHidden(category.isMeStoryHidden())
+                .updatedAt(LocalDateTime.now())
+                .build();
+    }
+
     public static Category toCategory(CategoryRequestDTO.CreateCategoryDto request) {
         return Category.builder()
                 .name(request.getName())

@@ -12,4 +12,6 @@ public interface CategoryCommandService {
 
     Category updateCategory(Long id, CategoryRequestDTO.UpdateCategoryDto request);
 
+    Category changeCategoryStatus(Long id);
+
 }

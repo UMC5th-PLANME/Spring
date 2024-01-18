@@ -33,4 +33,14 @@ public class CategoryResponseDTO {
         LocalDateTime updatedAt;
     }
 
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ChangeStatusCategoryResultDTO {
+        Long categoryId;
+        boolean meStoryHidden;
+        LocalDateTime updatedAt;
+    }
+
 }

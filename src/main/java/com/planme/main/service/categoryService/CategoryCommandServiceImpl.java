@@ -78,4 +78,15 @@ public class CategoryCommandServiceImpl implements CategoryCommandService {
 
         return category;
     }
+
+    @Override
+    @Transactional
+    public Category changeCategoryStatus(Long id) {
+        Member member = memberRepository.findById(1L).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
+        Category category = categoryRepository.findByIdAndMemberId(id, member.getId()).orElseThrow(() -> new CategoryHandler(ErrorStatus.CATEGORY_NOT_FOUND));
+
+        category.setMeStoryHidden(!category.isMeStoryHidden());
+
+        return category;
+    }
 }

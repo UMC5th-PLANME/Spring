@@ -19,6 +19,7 @@ public class CategoryRestController {
 
     /**
      * TODO: 로그인 API 구현 완료시 HttpServletRequest parameter 추가
+     *
      * @param request
      * @return
      */
@@ -27,16 +28,17 @@ public class CategoryRestController {
 
         Category category = categoryCommandService.createCategory(request);
 
-        return ApiResponse.of(SuccessStatus.CATEGORY_CREATED,CategoryConverter.toCreateResultDTO(category));
+        return ApiResponse.of(SuccessStatus.CATEGORY_CREATED, CategoryConverter.toCreateResultDTO(category));
     }
 
     /**
      * TODO: 로그인 API 구현 완료시 HttpServletRequest parameter 추가
+     *
      * @param id
      * @return
      */
     @DeleteMapping("/{categoryId}")
-    public ApiResponse<CategoryResponseDTO.DeleteCategoryResultDTO> deleteCategory(@PathVariable(name = "categoryId") Long id){
+    public ApiResponse<CategoryResponseDTO.DeleteCategoryResultDTO> deleteCategory(@PathVariable(name = "categoryId") Long id) {
         return ApiResponse.of(SuccessStatus.CATEGORY_DELETED, categoryCommandService.deleteCategory(id));
     }
 
@@ -46,5 +48,9 @@ public class CategoryRestController {
         return ApiResponse.of(SuccessStatus.CATEGORY_UPDATED, CategoryConverter.toUpdateResultDTO(category));
     }
 
-
+    @PatchMapping("/status/{categoryId}")
+    public ApiResponse<CategoryResponseDTO.ChangeStatusCategoryResultDTO> changeStatus(@PathVariable(name = "categoryId") Long id){
+        Category category = categoryCommandService.changeCategoryStatus(id);
+        return ApiResponse.of(SuccessStatus.CATEGORY_STATUS_CHANGED, CategoryConverter.toChangeStatusResultDTO(category));
+    }
 }
