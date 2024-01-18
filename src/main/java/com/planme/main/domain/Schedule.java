@@ -53,4 +53,8 @@ public class Schedule extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 }
