@@ -3,6 +3,7 @@ package com.planme.main.web.dto.CategoryDTO;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class CategoryResponseDTO {
 
@@ -41,6 +42,28 @@ public class CategoryResponseDTO {
         Long categoryId;
         boolean meStoryHidden;
         LocalDateTime updatedAt;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class GetCategoryResultDTO {
+        Long categoryId;
+        String name;
+        String emoticon;
+        String color;
+        boolean meStoryHidden;
+        LocalDateTime createdAt;
+        LocalDateTime updatedAt;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class GetCategoryListResultDTO {
+        List<GetCategoryResultDTO> categoryList;
     }
 
 }

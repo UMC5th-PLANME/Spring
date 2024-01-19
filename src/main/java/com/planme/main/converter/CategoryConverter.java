@@ -5,6 +5,8 @@ import com.planme.main.web.dto.CategoryDTO.CategoryRequestDTO;
 import com.planme.main.web.dto.CategoryDTO.CategoryResponseDTO;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CategoryConverter {
 
@@ -46,4 +48,24 @@ public class CategoryConverter {
                 .color(request.getColor())
                 .build();
     }
+
+    public static CategoryResponseDTO.GetCategoryResultDTO toGetCategoryResultDTO(Category category){
+        return CategoryResponseDTO.GetCategoryResultDTO.builder()
+                .categoryId(category.getId())
+                .name(category.getName())
+                .emoticon(category.getEmoticon())
+                .color(category.getColor())
+                .meStoryHidden(category.isMeStoryHidden())
+                .createdAt(category.getCreatedAt())
+                .updatedAt(category.getUpdatedAt())
+                .build();
+    }
+
+    public static CategoryResponseDTO.GetCategoryListResultDTO toGetCategoryListDTO(List<Category> categoryList) {
+        List<CategoryResponseDTO.GetCategoryResultDTO> categoryResultDTOList = categoryList.stream()
+                .map(CategoryConverter::toGetCategoryResultDTO).collect(Collectors.toList());
+        return CategoryResponseDTO.GetCategoryListResultDTO.builder()
+                .categoryList(categoryResultDTOList).build();
+    }
+
 }

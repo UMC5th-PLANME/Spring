@@ -18,7 +18,6 @@ public class CategoryRequestDTO {
         private String name;
         private String emoticon;
         private String color;
-
     }
 
 
