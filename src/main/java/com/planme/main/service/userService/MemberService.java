@@ -17,7 +17,8 @@ public class MemberService {
 
         Member member = Member.builder()
                 .loginType(registrationId)
-                .socialId(providerUser.getUsername())
+                .nickname(providerUser.getUsername())
+                .socialId(providerUser.getId())
                 .email(providerUser.getEmail())
                 .build();
 
