@@ -20,8 +20,7 @@ public class Member extends BaseEntity {
 
     private String nickname;
 
-    @Column(columnDefinition = "TINYINT(1)")
-    private boolean loginType;
+    private String loginType;
 
     private String socialId;
 
