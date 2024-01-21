@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 public class ScheduleResponseDTO {
 
     @Builder
@@ -23,5 +25,7 @@ public class ScheduleResponseDTO {
         private String alarm_time;
         private String created_at;
         private String updated_at;
+        private LocalDate startDate;  // 추가
+        private LocalDate endDate;  // 추가
     }
 }

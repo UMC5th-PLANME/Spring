@@ -22,6 +22,8 @@ public class ScheduleConverter {
                 .alarm_time(schedule.getAlarmTime().toString())
                 .created_at(schedule.getCreatedAt() != null ? schedule.getCreatedAt().toString() : null) // null 체크 추가
                 .updated_at(schedule.getUpdatedAt() != null ? schedule.getUpdatedAt().toString() : null) // null 체크 추가
+                .startDate(schedule.getStartDate())  // 추가
+                .endDate(schedule.getEndDate())  // 추가
                 .build();
     }
 

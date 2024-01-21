@@ -57,4 +57,12 @@ public class Schedule extends BaseEntity {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
 }

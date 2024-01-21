@@ -22,6 +22,8 @@ public class ScheduleCommandServiceImpl implements ScheduleCommandService{
         Category category = categoryRepository.findById(request.getCategory_id()).orElseThrow(() -> new IllegalArgumentException("카테고리가 존재하지 않습니다."));
         Schedule schedule = ScheduleConverter.toSchedule(request);
         schedule.setCategory(category);
+        schedule.setStartDate(request.getStartDate());
+        schedule.setEndDate(request.getEndDate());
 
         schedule = scheduleRepository.save(schedule);
 
