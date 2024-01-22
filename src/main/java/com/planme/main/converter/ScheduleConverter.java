@@ -5,6 +5,7 @@ import com.planme.main.domain.enums.Repeat;
 import com.planme.main.web.dto.ScheduleRequestDTO;
 import com.planme.main.web.dto.ScheduleResponseDTO;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -65,6 +66,13 @@ public class ScheduleConverter {
 
         return ScheduleResponseDTO.GetScheduleListResultDTO.builder()
                 .scheduleList(scheduleResultDTOList)
+                .build();
+    }
+
+    public static ScheduleResponseDTO.DeleteScheduleResultDTO toDeleteResultDTO(Schedule schedule){
+        return ScheduleResponseDTO.DeleteScheduleResultDTO.builder()
+                .schedule_id(schedule.getId())
+                .deletedAt(LocalDateTime.now())
                 .build();
     }
 }

@@ -39,4 +39,9 @@ public class ScheduleRestController {
         List<Schedule> scheduleList = scheduleQueryService.getScheduleList();
         return ApiResponse.of(SuccessStatus.SCHEDULE_FOUND, ScheduleConverter.toGetScheduleListDTO(scheduleList));
     }
+
+    @DeleteMapping("/{schedule_id}")
+    public ApiResponse<ScheduleResponseDTO.DeleteScheduleResultDTO> deleteSchedule(@PathVariable(name = "schedule_id") Long id){
+        return ApiResponse.of(SuccessStatus.SCHEDULE_DELETE, scheduleCommandService.deleteSchedule(id));
+    }
 }

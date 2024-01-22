@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class ScheduleResponseDTO {
@@ -56,5 +57,14 @@ public class ScheduleResponseDTO {
     @AllArgsConstructor
     public static class GetScheduleListResultDTO{
         List<GetScheduleResultDTO> scheduleList;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class DeleteScheduleResultDTO{
+        Long schedule_id;
+        LocalDateTime deletedAt;
     }
 }
