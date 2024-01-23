@@ -2,13 +2,11 @@ package com.planme.main.service.memberService;
 
 import com.planme.main.domain.Member;
 import com.planme.main.oauth2.user.ProviderUser;
-import com.planme.main.repository.memberRepository.MemberRepository;
+import com.planme.main.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
