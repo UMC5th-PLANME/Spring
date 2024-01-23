@@ -1,7 +1,7 @@
 package com.planme.main.oauth2.config;
 
 import com.planme.main.oauth2.authority.CustomAuthorityMapper;
-import com.planme.main.repository.memberRepository.MemberRepository;
+import com.planme.main.repository.MemberRepository;
 import com.planme.main.service.memberService.CustomOAuth2UserService;
 import com.planme.main.service.memberService.CustomOidcUserService;
 import com.planme.main.converter.MemberConverter;
@@ -17,7 +17,6 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @RequiredArgsConstructor

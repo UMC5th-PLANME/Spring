@@ -3,7 +3,7 @@ package com.planme.main.service.memberService;
 import com.planme.main.oauth2.converter.ProviderUserConverter;
 import com.planme.main.oauth2.converter.ProviderUserRequest;
 import com.planme.main.oauth2.user.ProviderUser;
-import com.planme.main.repository.memberRepository.MemberRepository;
+import com.planme.main.repository.MemberRepository;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;

@@ -1,7 +1,7 @@
 package com.planme.main.oauth2;
 
 import com.planme.main.converter.MemberConverter;
-import com.planme.main.repository.memberRepository.MemberRepository;
+import com.planme.main.repository.MemberRepository;
 import com.planme.main.web.dto.MemberDTO.MemberDTO;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

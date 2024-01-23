@@ -8,6 +8,7 @@ import com.planme.main.service.categoryService.CategoryCommandService;
 import com.planme.main.service.categoryService.CategoryQueryService;
 import com.planme.main.web.dto.CategoryDTO.CategoryRequestDTO;
 import com.planme.main.web.dto.CategoryDTO.CategoryResponseDTO;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,15 +23,13 @@ public class CategoryRestController {
     private final CategoryQueryService categoryQueryService;
 
     /**
-     * TODO: 로그인 API 구현 완료시 HttpServletRequest parameter 추가
-     *
      * @param request
      * @return
      */
     @PostMapping
-    public ApiResponse<CategoryResponseDTO.CreateCategoryResultDTO> createCategory(@RequestBody CategoryRequestDTO.CreateCategoryDto request) {
+    public ApiResponse<CategoryResponseDTO.CreateCategoryResultDTO> createCategory(HttpServletRequest httpServletRequest, @RequestBody CategoryRequestDTO.CreateCategoryDto request) {
 
-        Category category = categoryCommandService.createCategory(request);
+        Category category = categoryCommandService.createCategory(httpServletRequest, request);
 
         return ApiResponse.of(SuccessStatus.CATEGORY_CREATED, CategoryConverter.toCreateResultDTO(category));
     }
@@ -42,32 +41,32 @@ public class CategoryRestController {
      * @return
      */
     @DeleteMapping("/{categoryId}")
-    public ApiResponse<CategoryResponseDTO.DeleteCategoryResultDTO> deleteCategory(@PathVariable(name = "categoryId") Long id) {
-        return ApiResponse.of(SuccessStatus.CATEGORY_DELETED, categoryCommandService.deleteCategory(id));
+    public ApiResponse<CategoryResponseDTO.DeleteCategoryResultDTO> deleteCategory(HttpServletRequest httpServletRequest, @PathVariable(name = "categoryId") Long id) {
+        return ApiResponse.of(SuccessStatus.CATEGORY_DELETED, categoryCommandService.deleteCategory(httpServletRequest, id));
     }
 
     @PatchMapping("/{categoryId}")
-    public ApiResponse<CategoryResponseDTO.UpdateCategoryResultDTO> updateCategory(@PathVariable(name = "categoryId") Long id, @RequestBody CategoryRequestDTO.UpdateCategoryDto request) {
-        Category category = categoryCommandService.updateCategory(id, request);
+    public ApiResponse<CategoryResponseDTO.UpdateCategoryResultDTO> updateCategory(HttpServletRequest httpServletRequest, @PathVariable(name = "categoryId") Long id, @RequestBody CategoryRequestDTO.UpdateCategoryDto request) {
+        Category category = categoryCommandService.updateCategory(httpServletRequest,id, request);
         return ApiResponse.of(SuccessStatus.CATEGORY_UPDATED, CategoryConverter.toUpdateResultDTO(category));
     }
 
     @PatchMapping("/status/{categoryId}")
-    public ApiResponse<CategoryResponseDTO.ChangeStatusCategoryResultDTO> changeStatus(@PathVariable(name = "categoryId") Long id){
-        Category category = categoryCommandService.changeCategoryStatus(id);
+    public ApiResponse<CategoryResponseDTO.ChangeStatusCategoryResultDTO> changeStatus(HttpServletRequest httpServletRequest, @PathVariable(name = "categoryId") Long id){
+        Category category = categoryCommandService.changeCategoryStatus(httpServletRequest,id);
         return ApiResponse.of(SuccessStatus.CATEGORY_STATUS_CHANGED, CategoryConverter.toChangeStatusResultDTO(category));
     }
 
     @GetMapping("/{categoryId}")
-    public ApiResponse<CategoryResponseDTO.GetCategoryResultDTO> getCategory(@PathVariable(name = "categoryId") Long id) {
-        Category category = categoryQueryService.getCategory(id);
+    public ApiResponse<CategoryResponseDTO.GetCategoryResultDTO> getCategory(HttpServletRequest  httpServletRequest, @PathVariable(name = "categoryId") Long id) {
+        Category category = categoryQueryService.getCategory(httpServletRequest, id);
         return ApiResponse.of(SuccessStatus.CATEGORY_FOUND, CategoryConverter.toGetCategoryResultDTO(category));
 
     }
 
     @GetMapping("/all")
-    public ApiResponse<CategoryResponseDTO.GetCategoryListResultDTO> getCategoryList() {
-        List<Category> categoryList = categoryQueryService.getCategoryList();
+    public ApiResponse<CategoryResponseDTO.GetCategoryListResultDTO> getCategoryList(HttpServletRequest httpServletRequest) {
+        List<Category> categoryList = categoryQueryService.getCategoryList(httpServletRequest);
         return ApiResponse.of(SuccessStatus.CATEGORY_FOUND, CategoryConverter.toGetCategoryListDTO(categoryList));
     }
 }
