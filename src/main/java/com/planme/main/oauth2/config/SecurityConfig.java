@@ -1,8 +1,8 @@
 package com.planme.main.oauth2.config;
 
-import com.planme.main.oauth2.common.authority.CustomAuthorityMapper;
-import com.planme.main.service.userService.CustomOAuth2UserService;
-import com.planme.main.service.userService.CustomOidcUserService;
+import com.planme.main.oauth2.authority.CustomAuthorityMapper;
+import com.planme.main.service.memberService.CustomOAuth2UserService;
+import com.planme.main.service.memberService.CustomOidcUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

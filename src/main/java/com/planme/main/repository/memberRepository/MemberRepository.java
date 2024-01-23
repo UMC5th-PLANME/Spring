@@ -1,4 +1,4 @@
-package com.planme.main.repository;
+package com.planme.main.repository.memberRepository;
 
 import com.planme.main.domain.Member;
 import org.springframework.data.jpa.repository.JpaRepository;

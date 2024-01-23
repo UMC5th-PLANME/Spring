@@ -28,7 +28,7 @@ public abstract class OAuth2ProviderUser implements ProviderUser{
     }
 
     @Override
-    public List<? extends GrantedAuthority> getAuthorities() {
+    public List<SimpleGrantedAuthority> getAuthorities() {
         return oAuth2User.getAuthorities().stream()
                 .map(authority -> new SimpleGrantedAuthority(authority.getAuthority()))
                 .collect(Collectors.toList());

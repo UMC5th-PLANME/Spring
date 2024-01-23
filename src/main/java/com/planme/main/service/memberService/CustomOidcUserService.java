@@ -1,5 +1,6 @@
-package com.planme.main.service.userService;
+package com.planme.main.service.memberService;
 
+import com.planme.main.oauth2.converter.ProviderUserRequest;
 import com.planme.main.oauth2.user.ProviderUser;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserRequest;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserService;
@@ -18,8 +19,9 @@ public class CustomOidcUserService extends AbstractOAuth2UserService implements 
         ClientRegistration clientRegistration = userRequest.getClientRegistration();
         OAuth2UserService<OidcUserRequest, OidcUser> oidcUserService = new OidcUserService();
         OidcUser oidcUser = oidcUserService.loadUser(userRequest);
+        ProviderUserRequest providerUserRequest = new ProviderUserRequest(clientRegistration,oidcUser);
 
-        ProviderUser providerUser = super.providerUser(clientRegistration,oidcUser);
+        ProviderUser providerUser = super.providerUser(providerUserRequest);
         super.register(providerUser, userRequest);
 
         return oidcUser;

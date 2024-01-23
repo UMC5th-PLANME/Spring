@@ -1,4 +1,4 @@
-package com.planme.main.oauth2.common.authority;
+package com.planme.main.oauth2.authority;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
