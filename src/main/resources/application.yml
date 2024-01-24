@@ -13,6 +13,7 @@ spring:
         format_sql: true #To beautify or pretty print the SQL
         show_sql: true #show sql
 
+
   security:
     oauth2:
       client:
@@ -37,6 +38,8 @@ spring:
             user-info-uri: https://kapi.kakao.com/v1/oidc/userinfo
             jwk-set-uri: https://kauth.kakao.com/.well-known/jwks.json
             user-name-attribute: sub
+
+
 
 logging:
   level:
