@@ -4,16 +4,13 @@ import com.planme.main.domain.Member;
 import com.planme.main.domain.Terms;
 import com.planme.main.domain.common.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Getter
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-
 public class TermsAgreement extends BaseEntity {
 
     @Id
@@ -30,4 +27,14 @@ public class TermsAgreement extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "terms_id")
     private Terms terms;
+
+    //==연관 관계 메서드==//
+    public void setMember(Member member){
+        if(this.member != null){ // 이미 있다면
+            member.getTermsAgreementList().remove(this);
+        }
+        this.member = member;
+        member.getTermsAgreementList().add(this);
+    }
+
 }

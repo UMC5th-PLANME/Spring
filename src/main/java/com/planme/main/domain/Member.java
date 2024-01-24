@@ -1,6 +1,7 @@
 package com.planme.main.domain;
 
 import com.planme.main.domain.common.BaseEntity;
+import com.planme.main.domain.mapping.TermsAgreement;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -41,4 +42,6 @@ public class Member extends BaseEntity {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Category> categoryList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<TermsAgreement> termsAgreementList = new ArrayList<>();
 }
