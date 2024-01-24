@@ -4,7 +4,6 @@ import com.planme.main.domain.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Time;
 import java.time.LocalTime;
 
 @Entity
@@ -12,7 +11,7 @@ import java.time.LocalTime;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class MestoryFocus extends BaseEntity {
+public class MeStoryFocus extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

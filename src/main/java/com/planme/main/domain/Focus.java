@@ -3,6 +3,8 @@ package com.planme.main.domain;
 import com.planme.main.domain.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import java.sql.Time;
 import java.time.LocalTime;
@@ -18,17 +20,19 @@ public class Focus extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Builder.Default
     @Column(columnDefinition = "TIME")
-    private LocalTime focusTime;
+    private LocalTime focusTime = LocalTime.parse("00:00:00");
 
+    @Builder.Default
     @Column(columnDefinition = "TIME")
-    private LocalTime breakTime;
+    private LocalTime breakTime = LocalTime.parse("00:00:00");
 
-    private Integer repeatCnt;
+    private Long repeatCnt;
 
-    private Integer currentRepeatCnt;
+    private Long currentRepeatCnt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
 
