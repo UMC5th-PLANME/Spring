@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MemberRestController {
     private final MemberService memberService;
     private final MemberConverter memberConverter;
-    @GetMapping("/")
+    @GetMapping
     public ApiResponse<MemberDTO> getMember(HttpServletRequest httpServletRequest){
         Member member = memberService.getMember(httpServletRequest);
         return ApiResponse.of(SuccessStatus.MEMBER_FOUND,memberConverter.toMemberDTO(member));

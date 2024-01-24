@@ -12,7 +12,7 @@ public class MemberConverter {
         return MemberDTO.builder()
                 .email((String)attributes.get("email"))
                 .nickname((String)attributes.get("name"))
-                .picture((String)attributes.get("picture"))
+                .profile_image((String)attributes.get("picture"))
                 .build();
     }
 
@@ -20,6 +20,7 @@ public class MemberConverter {
         return MemberDTO.builder()
                 .email(member.getEmail())
                 .nickname(member.getNickname())
+                .profile_image(member.getProfileImage())
                 .build();
     }
 }
