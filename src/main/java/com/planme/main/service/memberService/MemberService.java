@@ -7,4 +7,5 @@ import jakarta.servlet.http.HttpServletRequest;
 public interface MemberService {
     public Member join(String registrationId, ProviderUser providerUser);
     public Member getMember(HttpServletRequest httpServletRequest);
+    public Member findMember(Long id);
 }
