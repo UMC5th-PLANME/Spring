@@ -1,8 +1,12 @@
 package com.planme.main.service.memberService;
 
+import com.planme.main.apiPayload.code.status.ErrorStatus;
+import com.planme.main.apiPayload.exception.handler.MemberHandler;
 import com.planme.main.domain.Member;
+import com.planme.main.oauth2.TokenService;
 import com.planme.main.oauth2.user.ProviderUser;
 import com.planme.main.repository.MemberRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberServiceImpl implements MemberService{
 
     private final MemberRepository memberRepository;
+    private final TokenService tokenService;
 
     @Transactional
     @Override
@@ -36,5 +41,11 @@ public class MemberServiceImpl implements MemberService{
             return memberRepository.save(member);
         }
 
+    }
+
+    @Override
+    public Member getMember(HttpServletRequest httpServletRequest) {
+        String email = tokenService.getUid(httpServletRequest.getHeader("Auth"));
+        return memberRepository.findByEmail(email).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
     }
 }
