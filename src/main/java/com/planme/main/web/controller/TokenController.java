@@ -47,7 +47,7 @@ public class TokenController {
     @GetMapping("/token/test")
     public String test(HttpServletRequest request) {
 
-        String token = request.getHeader("Auth");
+        String token = request.getHeader("Authorization");
         String email = tokenService.getUid(token);
         System.out.println(email);
         return email;
