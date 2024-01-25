@@ -23,7 +23,7 @@ public class CategoryQueryServiceImpl implements CategoryQueryService{
 
     @Override
     public Category getCategory(HttpServletRequest httpServletRequest, Long id) {
-        String email = tokenService.getUid(httpServletRequest.getHeader("Auth"));
+        String email = tokenService.getUid(tokenService.getJwtFromHeader(httpServletRequest));
         Member member = memberRepository.findByEmail(email).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
         Category category = categoryRepository.findByIdAndMemberId(id, member.getId()).orElseThrow(() -> new CategoryHandler(ErrorStatus.CATEGORY_NOT_FOUND));
 
@@ -32,7 +32,7 @@ public class CategoryQueryServiceImpl implements CategoryQueryService{
 
     @Override
     public List<Category> getCategoryList(HttpServletRequest httpServletRequest) {
-        String email = tokenService.getUid(httpServletRequest.getHeader("Auth"));
+        String email = tokenService.getUid(tokenService.getJwtFromHeader(httpServletRequest));
         Member member = memberRepository.findByEmail(email).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
         List<Category> categoryList = categoryRepository.findAllByMember(member);
         return categoryList;
