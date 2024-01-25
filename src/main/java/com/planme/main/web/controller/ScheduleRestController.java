@@ -34,7 +34,7 @@ public class ScheduleRestController {
         return ApiResponse.of(SuccessStatus.SCHEDULE_FOUND, ScheduleConverter.toGetScheduleResultDTO(schedule));
     }
 
-    @GetMapping("/")
+    @GetMapping
     public ApiResponse<ScheduleResponseDTO.GetScheduleListResultDTO> getScheduleList(){
         List<Schedule> scheduleList = scheduleQueryService.getScheduleList();
         return ApiResponse.of(SuccessStatus.SCHEDULE_FOUND, ScheduleConverter.toGetScheduleListDTO(scheduleList));
