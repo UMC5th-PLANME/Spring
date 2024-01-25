@@ -16,6 +16,9 @@ public enum SuccessStatus implements BaseCode {
     // 멤버 관련 응답
     MEMBER_FOUND(HttpStatus.OK,"MEMBER2001", "회원을 조회했습니다."),
 
+    //이미지 관련 응답
+    IMAGE_FOUND(HttpStatus.OK, "IMAGE2001","서버에 이미지 저장 성공"),
+
     // 카테고리 관련 응답
     CATEGORY_CREATED(HttpStatus.OK,"CATEGORY2001","카테고리가 추가되었습니다."),
     CATEGORY_DELETED(HttpStatus.OK,"CATEGORY2002","카테고리가 삭제되었습니다."),
