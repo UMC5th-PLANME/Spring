@@ -48,4 +48,9 @@ public class MemberServiceImpl implements MemberService{
         String email = tokenService.getUid(httpServletRequest.getHeader("Auth"));
         return memberRepository.findByEmail(email).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
     }
+
+    @Override
+    public Member findMember(Long id) {
+        return memberRepository.findById(id).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
+    }
 }
