@@ -45,7 +45,7 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public Member getMember(HttpServletRequest httpServletRequest) {
-        String email = tokenService.getUid(httpServletRequest.getHeader("Auth"));
+        String email = tokenService.getUid(tokenService.getJwtFromHeader(httpServletRequest));
         return memberRepository.findByEmail(email).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
     }
 
