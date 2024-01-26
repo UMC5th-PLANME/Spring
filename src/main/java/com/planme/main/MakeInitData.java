@@ -27,7 +27,7 @@ public class MakeInitData {
         Member member1 = Member.builder()
                 .nickname("testMember1")
                 .email("test@test.com")
-                .loginType(false)
+                .loginType("false")
                 .status(true)
                 .build();
         memberRepository.save(member1);

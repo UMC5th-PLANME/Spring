@@ -8,6 +8,7 @@ import com.planme.main.service.scheduleService.ScheduleCommandService;
 import com.planme.main.service.scheduleService.ScheduleQueryService;
 import com.planme.main.web.dto.ScheduleRequestDTO;
 import com.planme.main.web.dto.ScheduleResponseDTO;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,27 +22,25 @@ public class ScheduleRestController {
     private final ScheduleCommandService scheduleCommandService;
     private final ScheduleQueryService scheduleQueryService;
     @PostMapping
-    public ApiResponse<ScheduleResponseDTO.CreateScheduleResultDTO> createSchedule(@RequestBody ScheduleRequestDTO.CreateScheduleDto request){
-//        System.out.println("good");
-        Schedule schedule = scheduleCommandService.createSchedule(request);
-
+    public ApiResponse<ScheduleResponseDTO.CreateScheduleResultDTO> createSchedule(HttpServletRequest httpServletRequest, @RequestBody ScheduleRequestDTO.CreateScheduleDto request){
+        Schedule schedule = scheduleCommandService.createSchedule(httpServletRequest, request);
         return ApiResponse.onSuccess(ScheduleConverter.toCreateResultDTO(schedule));
     }
 
     @GetMapping("/{schedule_id}")
-    public ApiResponse<ScheduleResponseDTO.GetScheduleResultDTO> getSchedule(@PathVariable(name = "schedule_id") Long id){
-        Schedule schedule = scheduleQueryService.getSchedule(id);
+    public ApiResponse<ScheduleResponseDTO.GetScheduleResultDTO> getSchedule(HttpServletRequest httpServletRequest, @PathVariable(name = "schedule_id") Long id){
+        Schedule schedule = scheduleQueryService.getSchedule(httpServletRequest,id);
         return ApiResponse.of(SuccessStatus.SCHEDULE_FOUND, ScheduleConverter.toGetScheduleResultDTO(schedule));
     }
 
     @GetMapping
-    public ApiResponse<ScheduleResponseDTO.GetScheduleListResultDTO> getScheduleList(){
-        List<Schedule> scheduleList = scheduleQueryService.getScheduleList();
+    public ApiResponse<ScheduleResponseDTO.GetScheduleListResultDTO> getScheduleList(HttpServletRequest httpServletRequest){
+        List<Schedule> scheduleList = scheduleQueryService.getScheduleList(httpServletRequest);
         return ApiResponse.of(SuccessStatus.SCHEDULE_FOUND, ScheduleConverter.toGetScheduleListDTO(scheduleList));
     }
 
     @DeleteMapping("/{schedule_id}")
-    public ApiResponse<ScheduleResponseDTO.DeleteScheduleResultDTO> deleteSchedule(@PathVariable(name = "schedule_id") Long id){
-        return ApiResponse.of(SuccessStatus.SCHEDULE_DELETE, scheduleCommandService.deleteSchedule(id));
+    public ApiResponse<ScheduleResponseDTO.DeleteScheduleResultDTO> deleteSchedule(HttpServletRequest httpServletRequest, @PathVariable(name = "schedule_id") Long id){
+        return ApiResponse.of(SuccessStatus.SCHEDULE_DELETE, scheduleCommandService.deleteSchedule(httpServletRequest, id));
     }
 }
