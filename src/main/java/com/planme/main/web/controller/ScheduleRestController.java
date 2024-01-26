@@ -43,4 +43,10 @@ public class ScheduleRestController {
     public ApiResponse<ScheduleResponseDTO.DeleteScheduleResultDTO> deleteSchedule(HttpServletRequest httpServletRequest, @PathVariable(name = "schedule_id") Long id){
         return ApiResponse.of(SuccessStatus.SCHEDULE_DELETE, scheduleCommandService.deleteSchedule(httpServletRequest, id));
     }
+
+    @PatchMapping("/{schedule_id}")
+    public ApiResponse<ScheduleResponseDTO.UpdateScheduleResultDTO> updateSchedule(HttpServletRequest httpServletRequest, @PathVariable(name = "schedule_id") Long id, @RequestBody ScheduleRequestDTO.UpdateScheduleDto request){
+        Schedule schedule = scheduleCommandService.updateSchedule(httpServletRequest, id, request);
+        return ApiResponse.of(SuccessStatus.SCHEDULE_UPDATE, ScheduleConverter.toUpdateResultDTO(schedule));
+    }
 }

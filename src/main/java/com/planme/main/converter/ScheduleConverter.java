@@ -17,7 +17,7 @@ public class ScheduleConverter {
                 .id(schedule.getId())
                 .status(schedule.isStatus())
                 .category_id(schedule.getCategory() != null ? schedule.getCategory().getId() : null)
-                .repeat_status(schedule.getRepeatPeriod() != null)
+                .repeat_period(schedule.getRepeatPeriod())
                 .title(schedule.getTitle())
                 .start_time(schedule.getStartTime().toString())
                 .end_time(schedule.getEndTime().toString())
@@ -33,7 +33,7 @@ public class ScheduleConverter {
     public static Schedule toSchedule(ScheduleRequestDTO.CreateScheduleDto request){
         return Schedule.builder()
                 .status(request.isStatus())
-                .repeatPeriod(request.isRepeat_status() ? Repeat.DAILY : Repeat.NONE)
+                .repeatPeriod(request.getRepeat_period())//RepeatPeriod로 수정
                 .title(request.getTitle())
                 .startTime(LocalTime.parse(request.getStart_time()))
                 .endTime(LocalTime.parse(request.getEnd_time()))
@@ -47,7 +47,7 @@ public class ScheduleConverter {
                 .id(schedule.getId())
                 .status(schedule.isStatus())
                 .category_id(schedule.getCategory() != null ? schedule.getCategory().getId() : null)
-                .repeat_status(schedule.getRepeatPeriod() != null)
+                .repeat_period(schedule.getRepeatPeriod())
                 .title(schedule.getTitle())
                 .start_time(schedule.getStartTime().toString())
                 .end_time(schedule.getEndTime().toString())
@@ -75,4 +75,22 @@ public class ScheduleConverter {
                 .deletedAt(LocalDateTime.now())
                 .build();
     }
+
+    public static ScheduleResponseDTO.UpdateScheduleResultDTO toUpdateResultDTO(Schedule schedule){
+        return ScheduleResponseDTO.UpdateScheduleResultDTO.builder()
+                .status(schedule.isStatus())
+                .category_id(schedule.getCategory() != null ? schedule.getCategory().getId() : null)
+                .repeat_period(schedule.getRepeatPeriod())
+                .title(schedule.getTitle())
+                .start_time(schedule.getStartTime().toString())
+                .end_time(schedule.getEndTime().toString())
+                .alarm(schedule.isAlarm())
+                .alarm_time(schedule.getAlarmTime().toString())
+                .created_at(schedule.getCreatedAt().toString())
+                .updated_at(schedule.getUpdatedAt().toString())
+                .startDate(schedule.getStartDate())
+                .endDate(schedule.getEndDate())
+                .build();
+    }
+
 }

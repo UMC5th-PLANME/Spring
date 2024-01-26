@@ -1,5 +1,6 @@
 package com.planme.main.web.dto;
 
+import com.planme.main.domain.enums.Repeat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,7 +20,7 @@ public class ScheduleResponseDTO {
         private Long id;
         private boolean status;
         private Long category_id;
-        private boolean repeat_status;
+        private Repeat repeat_period;
         private String title;
         private String start_time;
         private String end_time;
@@ -39,7 +40,7 @@ public class ScheduleResponseDTO {
         private Long id;
         private boolean status;
         private Long category_id;
-        private boolean repeat_status;
+        private Repeat repeat_period;
         private String title;
         private String start_time;
         private String end_time;
@@ -66,5 +67,25 @@ public class ScheduleResponseDTO {
     public static class DeleteScheduleResultDTO{
         Long schedule_id;
         LocalDateTime deletedAt;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class UpdateScheduleResultDTO{
+        private boolean status;
+        private Long category_id;
+        private Repeat repeat_period;
+        private String title;
+        private String start_time;
+        private String end_time;
+        private boolean alarm;
+        private String alarm_time;
+        private String created_at;
+        private String updated_at;
+        private LocalDate startDate;
+        private LocalDate endDate;
+
     }
 }

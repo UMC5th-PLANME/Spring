@@ -19,6 +19,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalTime;
+
 @Service
 @RequiredArgsConstructor
 public class ScheduleCommandServiceImpl implements ScheduleCommandService{
@@ -60,4 +62,43 @@ public class ScheduleCommandServiceImpl implements ScheduleCommandService{
 
         return deleteScheduleResultDTO;
     }
+
+    @Override
+    @Transactional
+    public Schedule updateSchedule(HttpServletRequest httpServletRequest, Long id, ScheduleRequestDTO.UpdateScheduleDto request){
+        String email = tokenService.getUid(tokenService.getJwtFromHeader(httpServletRequest));
+        Member member = memberRepository.findByEmail(email).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
+        Schedule schedule = scheduleRepository.findByIdAndCategory_Member_Id(id, member.getId()).orElseThrow(() -> new ScheduleHandler(ErrorStatus.SCHEDULE_NOT_FOUND));
+
+        if (request.getCategory_id() != null) {
+            Category category = categoryRepository.findByIdAndMemberId(request.getCategory_id(), member.getId()).orElseThrow(() -> new CategoryHandler(ErrorStatus.CATEGORY_NOT_FOUND));
+            schedule.setCategory(category);
+        }
+        if (request.getTitle() != null) {
+            schedule.setTitle(request.getTitle());
+        }
+        if (request.getStart_time() != null) {
+            schedule.setStartTime(LocalTime.parse(request.getStart_time()));
+        }
+        if (request.getEnd_time() != null) {
+            schedule.setEndTime(LocalTime.parse(request.getEnd_time()));
+        }
+        if (request.getAlarm_time() != null) {
+            schedule.setAlarmTime(LocalTime.parse(request.getAlarm_time()));
+        }
+        if (request.getStartDate() != null) {
+            schedule.setStartDate(request.getStartDate());
+        }
+        if (request.getEndDate() != null) {
+            schedule.setEndDate(request.getEndDate());
+        }
+
+        schedule.setStatus(request.isStatus());
+        schedule.setRepeatPeriod(request.getRepeat_period());
+        schedule.setAlarm(request.isAlarm());
+
+        return scheduleRepository.save(schedule);
+    }
+
+
 }

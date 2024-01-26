@@ -10,5 +10,7 @@ public interface ScheduleCommandService {
     Schedule createSchedule(HttpServletRequest httpServletRequest,ScheduleRequestDTO.CreateScheduleDto request);
 
     ScheduleResponseDTO.DeleteScheduleResultDTO deleteSchedule(HttpServletRequest httpServletRequest, Long id);
+
+    Schedule updateSchedule(HttpServletRequest httpServletRequest,Long id,ScheduleRequestDTO.UpdateScheduleDto request);
 }
 
