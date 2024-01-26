@@ -65,4 +65,34 @@ public class Schedule extends BaseEntity {
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
+
+    public void setTitle(String title){this.title= title;}
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public void setEndTime(LocalTime endTime) {
+        this.endTime = endTime;
+    }
+
+    public void setAlarm(boolean alarm) {
+        this.alarm = alarm;
+    }
+
+    public void setAlarmTime(LocalTime alarmTime) {
+        this.alarmTime = alarmTime;
+    }
+
+    public void setRepeatPeriod(Repeat repeatPeriod) {
+        this.repeatPeriod = repeatPeriod;
+    }
+
+    public void setRepeatDetails(String repeatDetails) {
+        this.repeatDetails = repeatDetails;
+    }
 }
