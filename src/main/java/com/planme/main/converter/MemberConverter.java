@@ -35,7 +35,7 @@ public class MemberConverter {
     }
     public MemberResponseDTO.getMemberDTO toGetMemberResultDTO(Member member){
         return MemberResponseDTO.getMemberDTO.builder()
-                .id(member.getId())
+                .member_id(member.getId())
                 .nickname(member.getNickname())
                 .profile_image(member.getProfileImage())
                 .login_type(member.getLoginType())
@@ -43,6 +43,13 @@ public class MemberConverter {
                 .created_at(member.getCreatedAt())
                 .updated_at(member.getUpdatedAt())
                 .status(member.getStatus())
+                .build();
+    }
+
+    public MemberResponseDTO.DeleteMemberResultDTO toDeleteResultDTO(Member member) {
+        return MemberResponseDTO.DeleteMemberResultDTO.builder()
+                .member_id(member.getId())
+                .deleted_at(member.getUpdatedAt())
                 .build();
     }
 }

@@ -49,7 +49,7 @@ public class TermConverter {
         return TermResponseDTO.TermAgreeResultDTO.builder()
                 .agreeTermIds(agreeTermsId)
                 .disagreeTermIds(disagreeTermsId)
-                .memberId(memberId)
+                .member_id(memberId)
                 .build();
     }
 }
