@@ -2,6 +2,7 @@ package com.planme.main.converter;
 
 import com.planme.main.domain.Member;
 import com.planme.main.web.dto.MemberDTO.MemberDTO;
+import com.planme.main.web.dto.MemberDTO.MemberResponseDTO;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +22,15 @@ public class MemberConverter {
                 .email(member.getEmail())
                 .nickname(member.getNickname())
                 .profile_image(member.getProfileImage())
+                .build();
+    }
+
+    public MemberResponseDTO.UpdateProfileDTO toUpdateResultDTO(Member member){
+        return MemberResponseDTO.UpdateProfileDTO.builder()
+                .member_id(member.getId())
+                .updated_at(member.getUpdatedAt())
+                .image_url(member.getProfileImage())
+                .name(member.getNickname())
                 .build();
     }
 }

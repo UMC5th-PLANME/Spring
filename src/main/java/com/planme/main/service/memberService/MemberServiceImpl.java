@@ -6,6 +6,7 @@ import com.planme.main.domain.Member;
 import com.planme.main.oauth2.TokenService;
 import com.planme.main.oauth2.user.ProviderUser;
 import com.planme.main.repository.MemberRepository;
+import com.planme.main.web.dto.MemberDTO.MemberRequestDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -52,5 +53,15 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public Member findMember(Long id) {
         return memberRepository.findById(id).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
+    }
+
+    @Override
+    @Transactional
+    public Member updateMember(HttpServletRequest httpServletRequest, MemberRequestDTO.UpdateProfileDTO updateProfileDTO) {
+        String email = tokenService.getUid(tokenService.getJwtFromHeader(httpServletRequest));
+        Member member = memberRepository.findByEmail(email).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
+        if(updateProfileDTO.getName() != null) member.setNickname(updateProfileDTO.getName());
+        if(updateProfileDTO.getImage_url() != null) member.setProfileImage(updateProfileDTO.getImage_url());
+        return member;
     }
 }
