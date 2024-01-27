@@ -32,6 +32,7 @@ public class MemberServiceImpl implements MemberService{
                 .profileImage(providerUser.getPicture())
                 .socialId(providerUser.getId())
                 .email(providerUser.getEmail())
+                .status(1)
                 .build();
 
         //중복 회원 가입 방지

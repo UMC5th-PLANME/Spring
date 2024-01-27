@@ -33,4 +33,16 @@ public class MemberConverter {
                 .name(member.getNickname())
                 .build();
     }
+    public MemberResponseDTO.getMemberDTO toGetMemberResultDTO(Member member){
+        return MemberResponseDTO.getMemberDTO.builder()
+                .id(member.getId())
+                .nickname(member.getNickname())
+                .profile_image(member.getProfileImage())
+                .login_type(member.getLoginType())
+                .email(member.getEmail())
+                .created_at(member.getCreatedAt())
+                .updated_at(member.getUpdatedAt())
+                .status(member.getStatus())
+                .build();
+    }
 }
