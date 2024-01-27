@@ -44,4 +44,12 @@ public class Member extends BaseEntity {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<TermsAgreement> termsAgreementList = new ArrayList<>();
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+    }
 }
