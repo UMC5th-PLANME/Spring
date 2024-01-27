@@ -10,6 +10,8 @@ import com.planme.main.service.memberService.MemberService;
 import com.planme.main.service.termService.TermService;
 import com.planme.main.service.termService.TermServiceImpl;
 import com.planme.main.web.dto.MemberDTO.MemberDTO;
+import com.planme.main.web.dto.MemberDTO.MemberRequestDTO;
+import com.planme.main.web.dto.MemberDTO.MemberResponseDTO;
 import com.planme.main.web.dto.TermDTO.TermRequestDTO;
 import com.planme.main.web.dto.TermDTO.TermResponseDTO;
 import jakarta.servlet.http.HttpServletRequest;
@@ -35,6 +37,12 @@ public class MemberRestController {
     public ApiResponse<TermResponseDTO.TermAgreeResultDTO> termAgree(@RequestBody TermRequestDTO.TermAgreeDTO termAgreeDTO){
         List<TermsAgreement> agree = termService.agree(termAgreeDTO);
         return ApiResponse.of(SuccessStatus.MEMBER_TERMS_AGREED, TermConverter.toTermAgreeResultDTO(agree));
+    }
+
+    @PatchMapping
+    public ApiResponse<MemberResponseDTO.UpdateProfileDTO> updateMember(HttpServletRequest httpServletRequest, @RequestBody MemberRequestDTO.UpdateProfileDTO updateProfileDTO){
+        Member member = memberService.updateMember(httpServletRequest, updateProfileDTO);
+        return ApiResponse.of(SuccessStatus.MEMBER_UPDATE, memberConverter.toUpdateResultDTO(member));
     }
 }
 
