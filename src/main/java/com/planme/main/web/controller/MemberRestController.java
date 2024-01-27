@@ -28,9 +28,9 @@ public class MemberRestController {
     private final MemberConverter memberConverter;
     private final TermService termService;
     @GetMapping
-    public ApiResponse<MemberDTO> getMember(HttpServletRequest httpServletRequest){
+    public ApiResponse<MemberResponseDTO.getMemberDTO> getMember(HttpServletRequest httpServletRequest){
         Member member = memberService.getMember(httpServletRequest);
-        return ApiResponse.of(SuccessStatus.MEMBER_FOUND,memberConverter.toMemberDTO(member));
+        return ApiResponse.of(SuccessStatus.MEMBER_FOUND,memberConverter.toGetMemberResultDTO(member));
     }
 
     @PostMapping("/terms")
