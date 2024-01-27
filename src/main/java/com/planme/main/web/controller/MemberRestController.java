@@ -44,5 +44,10 @@ public class MemberRestController {
         Member member = memberService.updateMember(httpServletRequest, updateProfileDTO);
         return ApiResponse.of(SuccessStatus.MEMBER_UPDATE, memberConverter.toUpdateResultDTO(member));
     }
+    @DeleteMapping
+    public ApiResponse<MemberResponseDTO.DeleteMemberResultDTO> deleteMember(HttpServletRequest httpServletRequest){
+        Member member = memberService.deleteMember(httpServletRequest);
+        return ApiResponse.of(SuccessStatus.MEMBER_DELETE, memberConverter.toDeleteResultDTO(member));
+    }
 }
 
