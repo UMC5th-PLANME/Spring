@@ -54,4 +54,8 @@ public class Member extends BaseEntity {
     public void setProfileImage(String profileImage) {
         this.profileImage = profileImage;
     }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 }

@@ -65,4 +65,13 @@ public class MemberServiceImpl implements MemberService{
         if(updateProfileDTO.getImage_url() != null) member.setProfileImage(updateProfileDTO.getImage_url());
         return member;
     }
+
+    @Override
+    @Transactional
+    public Member deleteMember(HttpServletRequest httpServletRequest) {
+        String email = tokenService.getUid(tokenService.getJwtFromHeader(httpServletRequest));
+        Member member = memberRepository.findByEmail(email).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
+        member.setStatus(0);
+        return member;
+    }
 }

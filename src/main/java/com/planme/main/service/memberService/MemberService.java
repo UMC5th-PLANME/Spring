@@ -10,4 +10,5 @@ public interface MemberService {
     public Member getMember(HttpServletRequest httpServletRequest);
     public Member findMember(Long id);
     Member updateMember(HttpServletRequest httpServletRequest, MemberRequestDTO.UpdateProfileDTO updateProfileDTO);
+    Member deleteMember(HttpServletRequest httpServletRequest);
 }
