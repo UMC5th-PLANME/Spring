@@ -41,8 +41,9 @@ public enum ErrorStatus implements BaseErrorCode {
     CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "CATEGORY4001", "해당 카테고리 ID가 없습니다."),
 
     //meStory 관련
-    MESTORY_DATE_NOT_FOUND(HttpStatus.NOT_FOUND, "MESTORY4001", "해당 날짜에 해당하는 MESTORY 정보가 없습니다"),
-    MESTORY_MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, "MESTORY4002", "존재하지 않는 MEMBER_ID 입니다")
+    MESTORY_MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, "MESTORY4001", "존재하지 않는 MEMBER_ID 입니다"),
+    MESTORY_DATE_FORM_ERROR(HttpStatus.NOT_FOUND, "MESTORY4002", "잘못된 날짜 형식입니다")
+
 
     ;
 
