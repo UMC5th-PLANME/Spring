@@ -29,4 +29,20 @@ public class FocusResponseDTO {
         private String updatedAt;
     }
 
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class PostFocusResultDTO{
+
+        private Long id;
+
+        private Long categoryId;
+
+        private String createdAt;
+
+        private String updatedAt;
+
+    }
+
 }

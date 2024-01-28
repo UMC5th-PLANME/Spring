@@ -11,6 +11,7 @@ import java.time.LocalTime;
 
 @Entity
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -35,5 +36,13 @@ public class Focus extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
+
+
+    public void updateFocus(LocalTime focusTime, LocalTime breakTime, Long repeatCnt) {
+        this.focusTime = focusTime;
+        this.breakTime = breakTime;
+        this.repeatCnt = repeatCnt;
+    }
+
 
 }

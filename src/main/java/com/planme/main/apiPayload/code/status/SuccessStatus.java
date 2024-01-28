@@ -16,7 +16,12 @@ public enum SuccessStatus implements BaseCode {
     // 멤버 관련 응답
 
     // focus 관련 응답
-    FOCUS_FOUND(HttpStatus.OK, "FOCUS2001", "FOCUS 정보 조회 성공입니다");
+    FOCUS_FOUND(HttpStatus.OK, "FOCUS2001", "FOCUS 정보 조회 성공입니다"),
+    FOCUS_CREATED(HttpStatus.OK, "FOCUS2011", "FOCUS 정보 생성 성공입니다"),
+    FOCUS_UPDATED(HttpStatus.OK, "FOCUS2012", "FOCUS 정보 업데이트 성공입니다"),
+
+    // meStory 관련 응답
+    MESTORY_FOUND(HttpStatus.OK, "MESTORY2001", "MESTORY 정보 조회 성공입니다");
 
     private final HttpStatus httpStatus;
     private final String code;

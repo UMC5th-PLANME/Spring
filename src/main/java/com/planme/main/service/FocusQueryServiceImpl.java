@@ -21,7 +21,8 @@ public class FocusQueryServiceImpl implements FocusQueryService {
     public Focus getFocusByCategoryId(Long categoryId){
         Optional<Focus> optionalFocus = Optional.ofNullable(focusRepository.findByCategoryId(categoryId));
 
-        return optionalFocus.orElseThrow(() -> new FocusHandler(ErrorStatus.CATEGORYID_NOT_FOUND));
+
+        return optionalFocus.orElseThrow(() -> new FocusHandler(ErrorStatus.CATEGORY_NOT_FOUND));
 
     };
 }
