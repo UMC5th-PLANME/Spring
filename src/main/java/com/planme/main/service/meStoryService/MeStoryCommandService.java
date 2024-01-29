@@ -1,8 +1,7 @@
-package com.planme.main.service;
+package com.planme.main.service.meStoryService;
 
-import com.planme.main.domain.Focus;
 import com.planme.main.domain.MeStoryFocus;
-import com.planme.main.web.dto.MeStoryRequestDTO;
+import com.planme.main.web.dto.MeStoryDTO.MeStoryRequestDTO;
 import org.springframework.data.util.Pair;
 
 public interface MeStoryCommandService {

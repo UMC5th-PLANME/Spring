@@ -2,22 +2,18 @@ package com.planme.main.web.controller;
 
 import com.planme.main.apiPayload.ApiResponse;
 import com.planme.main.apiPayload.code.status.SuccessStatus;
-import com.planme.main.converter.FocusConverter;
 import com.planme.main.converter.MeStoryConverter;
-import com.planme.main.domain.Focus;
 import com.planme.main.domain.MeStoryFocus;
 import com.planme.main.repository.MeStoryFocusRepository;
-import com.planme.main.service.MeStoryCommandService;
-import com.planme.main.service.MeStoryQueryService;
-import com.planme.main.web.dto.MeStoryRequestDTO;
-import com.planme.main.web.dto.MeStoryResponseDTO;
+import com.planme.main.service.meStoryService.MeStoryCommandService;
+import com.planme.main.service.meStoryService.MeStoryQueryService;
+import com.planme.main.web.dto.MeStoryDTO.MeStoryRequestDTO;
+import com.planme.main.web.dto.MeStoryDTO.MeStoryResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.util.Pair;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/meStory")

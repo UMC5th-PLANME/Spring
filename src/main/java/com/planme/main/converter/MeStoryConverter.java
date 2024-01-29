@@ -3,10 +3,8 @@ package com.planme.main.converter;
 import com.planme.main.domain.Category;
 import com.planme.main.domain.Focus;
 import com.planme.main.domain.MeStoryFocus;
-import com.planme.main.web.dto.FocusRequestDTO;
-import com.planme.main.web.dto.FocusResponseDTO;
-import com.planme.main.web.dto.MeStoryRequestDTO;
-import com.planme.main.web.dto.MeStoryResponseDTO;
+import com.planme.main.web.dto.MeStoryDTO.MeStoryRequestDTO;
+import com.planme.main.web.dto.MeStoryDTO.MeStoryResponseDTO;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;

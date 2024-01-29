@@ -1,4 +1,4 @@
-package com.planme.main.web.dto;
+package com.planme.main.web.dto.FocusDTO;
 
 import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
@@ -14,7 +14,7 @@ public class FocusResponseDTO {
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class ReadFocusResultDTO{
+    public static class ReadFocusResultDTO {
 
         private LocalTime focusTime;
 
@@ -33,7 +33,7 @@ public class FocusResponseDTO {
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class PostFocusResultDTO{
+    public static class PostFocusResultDTO {
 
         private Long id;
 

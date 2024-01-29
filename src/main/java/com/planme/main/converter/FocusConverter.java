@@ -2,8 +2,8 @@ package com.planme.main.converter;
 
 import com.planme.main.domain.Category;
 import com.planme.main.domain.Focus;
-import com.planme.main.web.dto.FocusRequestDTO;
-import com.planme.main.web.dto.FocusResponseDTO;
+import com.planme.main.web.dto.FocusDTO.FocusRequestDTO;
+import com.planme.main.web.dto.FocusDTO.FocusResponseDTO;
 
 import java.time.LocalTime;
 
@@ -30,16 +30,6 @@ public class FocusConverter {
                 .category(category)
                 .build();
     }
-
-//    public static Focus toUpdateFocus(FocusRequestDTO.PostFocusDTO request, Focus focus) {
-//        return Focus.builder()
-//                .focusTime(LocalTime.parse(request.getFocusTime()))
-//                .breakTime(LocalTime.parse(request.getBreakTime()))
-//                .repeatCnt(request.getRepeatCnt())
-//                .currentRepeatCnt(focus.getCurrentRepeatCnt())
-//                .category(focus.getCategory())
-//                .build();
-//    }
 
     public static FocusResponseDTO.PostFocusResultDTO toPostFocusResultDTO(Focus focus) {
         return FocusResponseDTO.PostFocusResultDTO.builder()

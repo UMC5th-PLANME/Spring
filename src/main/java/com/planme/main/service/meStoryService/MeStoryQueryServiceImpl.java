@@ -1,4 +1,4 @@
-package com.planme.main.service;
+package com.planme.main.service.meStoryService;
 
 
 import com.planme.main.apiPayload.code.status.ErrorStatus;
@@ -7,9 +7,8 @@ import com.planme.main.domain.Category;
 import com.planme.main.domain.MeStoryFocus;
 import com.planme.main.repository.CategoryRepository;
 import com.planme.main.repository.MeStoryFocusRepository;
-import com.planme.main.repository.MemberRepository;
 import com.planme.main.repository.ScheduleRepository;
-import com.planme.main.web.dto.MeStoryResponseDTO;
+import com.planme.main.web.dto.MeStoryDTO.MeStoryResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

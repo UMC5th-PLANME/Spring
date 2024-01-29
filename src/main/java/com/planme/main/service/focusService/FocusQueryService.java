@@ -1,4 +1,4 @@
-package com.planme.main.service;
+package com.planme.main.service.focusService;
 
 import com.planme.main.domain.Focus;
 import lombok.RequiredArgsConstructor;

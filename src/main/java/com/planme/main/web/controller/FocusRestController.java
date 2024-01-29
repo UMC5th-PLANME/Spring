@@ -4,14 +4,13 @@ import com.planme.main.apiPayload.ApiResponse;
 import com.planme.main.apiPayload.code.status.SuccessStatus;
 import com.planme.main.converter.FocusConverter;
 import com.planme.main.domain.Focus;
-import com.planme.main.service.FocusCommandService;
-import com.planme.main.service.FocusQueryService;
-import com.planme.main.web.dto.FocusRequestDTO;
-import com.planme.main.web.dto.FocusResponseDTO;
+import com.planme.main.service.focusService.FocusCommandService;
+import com.planme.main.service.focusService.FocusQueryService;
+import com.planme.main.web.dto.FocusDTO.FocusRequestDTO;
+import com.planme.main.web.dto.FocusDTO.FocusResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.util.Pair;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/focus")

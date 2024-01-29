@@ -1,4 +1,4 @@
-package com.planme.main.web.dto;
+package com.planme.main.web.dto.MeStoryDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

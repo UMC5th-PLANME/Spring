@@ -1,4 +1,4 @@
-package com.planme.main.service;
+package com.planme.main.service.meStoryService;
 
 
 import com.planme.main.apiPayload.code.status.ErrorStatus;
@@ -11,7 +11,7 @@ import com.planme.main.domain.MeStoryFocus;
 import com.planme.main.repository.CategoryRepository;
 import com.planme.main.repository.FocusRepository;
 import com.planme.main.repository.MeStoryFocusRepository;
-import com.planme.main.web.dto.MeStoryRequestDTO;
+import com.planme.main.web.dto.MeStoryDTO.MeStoryRequestDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;

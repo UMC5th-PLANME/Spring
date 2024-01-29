@@ -1,4 +1,4 @@
-package com.planme.main.service;
+package com.planme.main.service.focusService;
 
 import com.planme.main.apiPayload.code.status.ErrorStatus;
 import com.planme.main.apiPayload.exception.handler.FocusHandler;
@@ -8,7 +8,7 @@ import com.planme.main.domain.Category;
 import com.planme.main.domain.Focus;
 import com.planme.main.repository.CategoryRepository;
 import com.planme.main.repository.FocusRepository;
-import com.planme.main.web.dto.FocusRequestDTO;
+import com.planme.main.web.dto.FocusDTO.FocusRequestDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;

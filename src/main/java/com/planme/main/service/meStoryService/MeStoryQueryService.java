@@ -1,6 +1,6 @@
-package com.planme.main.service;
+package com.planme.main.service.meStoryService;
 
-import com.planme.main.web.dto.MeStoryResponseDTO;
+import com.planme.main.web.dto.MeStoryDTO.MeStoryResponseDTO;
 
 import java.util.List;
 
