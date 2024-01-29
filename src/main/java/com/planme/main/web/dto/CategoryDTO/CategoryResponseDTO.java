@@ -52,7 +52,7 @@ public class CategoryResponseDTO {
         Long categoryId;
         String name;
         String emoticon;
-        String color;
+        Integer color;
         boolean meStoryHidden;
         LocalDateTime createdAt;
         LocalDateTime updatedAt;

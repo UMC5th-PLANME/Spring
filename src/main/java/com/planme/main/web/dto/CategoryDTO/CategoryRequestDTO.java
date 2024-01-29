@@ -9,7 +9,7 @@ public class CategoryRequestDTO {
 
         private String name;
         private String emoticon;
-        private String color;
+        private Integer color;
 
     }
     @Getter
@@ -17,7 +17,7 @@ public class CategoryRequestDTO {
 
         private String name;
         private String emoticon;
-        private String color;
+        private Integer color;
     }
 
 
