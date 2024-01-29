@@ -2,6 +2,7 @@ package com.planme.main.service;
 
 import com.planme.main.apiPayload.code.status.ErrorStatus;
 import com.planme.main.apiPayload.exception.handler.FocusHandler;
+import com.planme.main.apiPayload.exception.handler.MeStoryHandler;
 import com.planme.main.converter.FocusConverter;
 import com.planme.main.domain.Category;
 import com.planme.main.domain.Focus;
@@ -13,6 +14,7 @@ import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 
@@ -26,6 +28,10 @@ public class FocusCommandServiceImpl implements FocusCommandService {
     public Pair<Focus,Integer> postFocusByCategoryId(FocusRequestDTO.PostFocusDTO request, Long categoryId) {
         Optional<Focus> findFocus = Optional.ofNullable(focusRepository.findByCategoryId(categoryId));
         Optional<Category> findCategory = categoryRepository.findById(categoryId);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+        validateTimeFormat(request.getFocusTime());
+        validateTimeFormat(request.getBreakTime());
 
         if (findFocus.isPresent()) {
             //update
@@ -50,6 +56,14 @@ public class FocusCommandServiceImpl implements FocusCommandService {
         } else {
             //Category not found
             throw new FocusHandler(ErrorStatus.CATEGORY_NOT_FOUND);
+        }
+    }
+
+    private void validateTimeFormat(String timeString) {
+        try {
+            LocalTime.parse(timeString, DateTimeFormatter.ofPattern("HH:mm:ss"));
+        } catch (Exception e) {
+            throw new MeStoryHandler(ErrorStatus.MESTORY_REQUEST_FORM_ERROR);
         }
     }
 }

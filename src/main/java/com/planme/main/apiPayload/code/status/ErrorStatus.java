@@ -42,7 +42,7 @@ public enum ErrorStatus implements BaseErrorCode {
 
     //meStory 관련
     MESTORY_MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, "MESTORY4001", "존재하지 않는 MEMBER_ID 입니다"),
-    MESTORY_DATE_FORM_ERROR(HttpStatus.NOT_FOUND, "MESTORY4002", "잘못된 날짜 형식입니다"),
+    MESTORY_REQUEST_FORM_ERROR(HttpStatus.NOT_FOUND, "MESTORY4002", "잘못된 요청 형식입니다"),
     MESTORY_FOCUS_SETTING_NOT_FOUND(HttpStatus.NOT_FOUND, "MESTORY4003", "FOCUS 설정이 존재하지 않습니다"),
 
 

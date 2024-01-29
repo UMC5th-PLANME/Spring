@@ -34,7 +34,7 @@ public class MeStoryQueryServiceImpl implements MeStoryQueryService {
         List<Category> categories = categoryRepository.findByMemberId(member_id);
 
         if(!(date.length() == 8 && date.chars().allMatch(Character::isDigit))){
-            throw new MeStoryHandler(ErrorStatus.MESTORY_DATE_FORM_ERROR);
+            throw new MeStoryHandler(ErrorStatus.MESTORY_REQUEST_FORM_ERROR);
         }
         else if (categories.isEmpty()) {
             throw new MeStoryHandler(ErrorStatus.MESTORY_MEMBER_NOT_FOUND);
