@@ -26,6 +26,4 @@ public class Terms extends BaseEntity {
     @Column(columnDefinition = "TINYINT(1)")
     private boolean required;  //  0: 선택, 1: 필수
 
-    @OneToMany(mappedBy = "terms", cascade = CascadeType.ALL)
-    private List<TermsAgreement> termsAgreementList = new ArrayList<>();
 }
