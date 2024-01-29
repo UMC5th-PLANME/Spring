@@ -11,7 +11,4 @@ import java.util.Optional;
 
 public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
     Long countByCategoryIdAndStatus(Long category_id, boolean status);
-
-
-
 }

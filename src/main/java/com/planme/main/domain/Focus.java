@@ -42,6 +42,11 @@ public class Focus extends BaseEntity {
         this.focusTime = focusTime;
         this.breakTime = breakTime;
         this.repeatCnt = repeatCnt;
+        this.currentRepeatCnt = 0L;
+    }
+
+    public void incrementCurrentRepeatCnt() {
+        this.currentRepeatCnt++;
     }
 
 

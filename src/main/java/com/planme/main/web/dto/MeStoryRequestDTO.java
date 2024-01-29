@@ -7,14 +7,13 @@ import lombok.NoArgsConstructor;
 
 public class MeStoryRequestDTO {
 
-//    @Builder
-//    @Getter
-//    @NoArgsConstructor
-//    @AllArgsConstructor
-//    public static class PostMeStoryRequestDTO{
-//
-//
-//    }
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class PostMeStoryFocusRequestDTO{
+        private String totalFocusTime;
+    }
 
 
 }

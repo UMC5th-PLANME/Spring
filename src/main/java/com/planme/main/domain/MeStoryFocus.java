@@ -24,4 +24,8 @@ public class MeStoryFocus extends BaseEntity {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    public void setTotalFocusTime(LocalTime totalFocusTime) {
+        this.totalFocusTime = totalFocusTime;
+    }
+
 }

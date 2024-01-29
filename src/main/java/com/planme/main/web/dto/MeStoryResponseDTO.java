@@ -29,14 +29,18 @@ public class MeStoryResponseDTO {
         List<ReadMeStoryResultDTO> me_story_result;
     }
 
-//    @Builder
-//    @Getter
-//    @NoArgsConstructor
-//    @AllArgsConstructor
-//    public static class PostMeStoryResultDT{
-//
-//
-//    }
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class PostMeStoryResultDTO{
+        private Long id;
+        private Long categoryId;
+        private String totalFocusTime;
+        private String createdAt;
+        private String updatedAt;
+
+    }
 
 
 }

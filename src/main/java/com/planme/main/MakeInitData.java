@@ -54,20 +54,20 @@ public class MakeInitData {
                 .build();
         scheduleRepository.save(schedule1);
 
-        MeStoryFocus meStoryFocus1 = MeStoryFocus.builder()
-                .totalFocusTime(LocalTime.parse("10:00:00"))
-                .category(category1)
-                .build();
-        meStoryFocusRepository.save(meStoryFocus1);
-
-//        Focus focus1 = Focus.builder()
-//                .focusTime(LocalTime.parse("10:00:00"))
-//                .breakTime(LocalTime.parse("00:10:00"))
-//                .repeatCnt(2L)
-//                .currentRepeatCnt(2L)
-//                .category(categoryRepository.findByName("testCategory1"))
+//        MeStoryFocus meStoryFocus1 = MeStoryFocus.builder()
+//                .totalFocusTime(LocalTime.parse("10:00:00"))
+//                .category(category1)
 //                .build();
-//        focusRepository.save(focus1);
+//        meStoryFocusRepository.save(meStoryFocus1);
+
+        Focus focus1 = Focus.builder()
+                .focusTime(LocalTime.parse("10:00:00"))
+                .breakTime(LocalTime.parse("00:10:00"))
+                .repeatCnt(2L)
+                .currentRepeatCnt(0L)
+                .category(categoryRepository.findByName("testCategory1"))
+                .build();
+        focusRepository.save(focus1);
 
     }
 }
