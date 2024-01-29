@@ -40,6 +40,12 @@ public class Category extends BaseEntity {
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<MeContent> meContentList = new ArrayList<>();
 
+    @OneToOne(mappedBy = "category", cascade = CascadeType.ALL)
+    private Focus focus;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private List<MeStoryFocus> meStoryFocusList = new ArrayList<>();
+
     public void setMember(Member member) {
         if (member != null) {
             member.getCategoryList().remove(this);

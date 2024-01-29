@@ -27,8 +27,18 @@ public enum SuccessStatus implements BaseCode {
     CATEGORY_DELETED(HttpStatus.OK,"CATEGORY2002","카테고리가 삭제되었습니다."),
     CATEGORY_UPDATED(HttpStatus.OK,"CATEGORY2003","카테고리가 수정되었습니다."),
     CATEGORY_STATUS_CHANGED(HttpStatus.OK,"CATEGORY2004","카테고리 숨김 설정이 변경되었습니다."),
-    CATEGORY_FOUND(HttpStatus.OK,"CATEGORY2005","카테고리를 조회했습니다.")
-    ;
+    CATEGORY_FOUND(HttpStatus.OK,"CATEGORY2005","카테고리를 조회했습니다."),
+
+    // focus 관련 응답
+    FOCUS_FOUND(HttpStatus.OK, "FOCUS2001", "FOCUS 정보 조회 성공입니다"),
+    FOCUS_CREATED(HttpStatus.OK, "FOCUS2011", "FOCUS 정보 생성 성공입니다"),
+    FOCUS_UPDATED(HttpStatus.OK, "FOCUS2012", "FOCUS 정보 업데이트 성공입니다"),
+
+    // meStory 관련 응답
+    MESTORY_FOUND(HttpStatus.OK, "MESTORY2001", "MESTORY 정보 조회 성공입니다"),
+    MESTORY_FOCUSTIME_CREATED(HttpStatus.OK, "MESTORY2011", "MESTORY 집중 시간 생성 성공입니다"),
+    MESTORY_FOCUSTIME_UPDATED(HttpStatus.OK, "MESTORY2012", "MESTORY 집중 시간 갱신 성공입니다");
+
 
     private final HttpStatus httpStatus;
     private final String code;
