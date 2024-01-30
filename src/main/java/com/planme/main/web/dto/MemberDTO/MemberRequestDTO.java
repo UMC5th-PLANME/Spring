@@ -8,4 +8,12 @@ public class MemberRequestDTO {
         private String name;
         private String image_url;
     }
+
+    @Getter
+    public static class JoinMemberDTO {
+        private String name;
+        private String profile_image;
+        private String login_type;
+        private String email;
+    }
 }
