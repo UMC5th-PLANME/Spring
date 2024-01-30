@@ -27,7 +27,6 @@ spring:
             client-secret: ${KAKAO_SECRET}
             authorization-grant-type: authorization_code
             client-name: plan_me
-            redirect-uri: http://localhost:8080/login/oauth2/code/kakao
             scope: profile_nickname,profile_image, account_email
 
         provider:
