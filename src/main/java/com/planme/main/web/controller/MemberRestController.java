@@ -6,6 +6,8 @@ import com.planme.main.converter.MemberConverter;
 import com.planme.main.converter.TermConverter;
 import com.planme.main.domain.Member;
 import com.planme.main.domain.mapping.TermsAgreement;
+import com.planme.main.oauth2.Token;
+import com.planme.main.oauth2.TokenService;
 import com.planme.main.service.memberService.MemberService;
 import com.planme.main.service.termService.TermService;
 import com.planme.main.service.termService.TermServiceImpl;
@@ -26,11 +28,19 @@ import java.util.List;
 public class MemberRestController {
     private final MemberService memberService;
     private final MemberConverter memberConverter;
+    private final TokenService tokenService;
     private final TermService termService;
     @GetMapping
     public ApiResponse<MemberResponseDTO.getMemberDTO> getMember(HttpServletRequest httpServletRequest){
         Member member = memberService.getMember(httpServletRequest);
         return ApiResponse.of(SuccessStatus.MEMBER_FOUND,memberConverter.toGetMemberResultDTO(member));
+    }
+
+    @PostMapping("/login")
+    public ApiResponse<MemberResponseDTO.JoinResultDTO> joinMember(@RequestBody MemberRequestDTO.JoinMemberDTO joinMemberDTO){
+        Member member = memberService.joinMember(joinMemberDTO);
+        Token token = tokenService.generateToken(member.getEmail(), "USER");
+        return ApiResponse.of(SuccessStatus.MEMBER_JOIN, memberConverter.toJoinResultDTO(member,token));
     }
 
     @PostMapping("/terms")

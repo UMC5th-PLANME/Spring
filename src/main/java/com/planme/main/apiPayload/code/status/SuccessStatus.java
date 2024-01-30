@@ -18,6 +18,7 @@ public enum SuccessStatus implements BaseCode {
     MEMBER_TERMS_AGREED(HttpStatus.OK, "MEMBER2002", "회원의 이용약관 동의했습니다."),
     MEMBER_UPDATE(HttpStatus.OK, "MEMBER2003", "회원정보를 업데이트 했습니다. "),
     MEMBER_DELETE(HttpStatus.OK, "MEMBER2004", "회원 탈퇴 성공"),
+    MEMBER_JOIN(HttpStatus.OK, "MEMBER2005", "로그인 성공"),
 
     //이미지 관련 응답
     IMAGE_FOUND(HttpStatus.OK, "IMAGE2001","서버에 이미지 저장 성공"),

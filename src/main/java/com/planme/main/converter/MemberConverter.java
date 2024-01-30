@@ -1,6 +1,7 @@
 package com.planme.main.converter;
 
 import com.planme.main.domain.Member;
+import com.planme.main.oauth2.Token;
 import com.planme.main.web.dto.MemberDTO.MemberDTO;
 import com.planme.main.web.dto.MemberDTO.MemberResponseDTO;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -50,6 +51,15 @@ public class MemberConverter {
         return MemberResponseDTO.DeleteMemberResultDTO.builder()
                 .member_id(member.getId())
                 .deleted_at(member.getUpdatedAt())
+                .build();
+    }
+
+    public MemberResponseDTO.JoinResultDTO toJoinResultDTO(Member member, Token token) {
+        return MemberResponseDTO.JoinResultDTO.builder()
+                .member_id(member.getId())
+                .created_at(member.getCreatedAt())
+                .accessToken(token.getToken())
+                .refreshToken(token.getRefreshToken())
                 .build();
     }
 }
