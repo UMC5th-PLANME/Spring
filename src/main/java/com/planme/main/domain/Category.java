@@ -25,7 +25,7 @@ public class Category extends BaseEntity {
 
     private String emoticon;
 
-    private String color;
+    private Integer color;
 
     @Column(columnDefinition = "TINYINT(1)")
     private boolean meStoryHidden;    //  0: 숨기지 않음, 1: 숨김
@@ -39,6 +39,12 @@ public class Category extends BaseEntity {
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<MeContent> meContentList = new ArrayList<>();
+
+    @OneToOne(mappedBy = "category", cascade = CascadeType.ALL)
+    private Focus focus;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private List<MeStoryFocus> meStoryFocusList = new ArrayList<>();
 
     public void setMember(Member member) {
         if (member != null) {

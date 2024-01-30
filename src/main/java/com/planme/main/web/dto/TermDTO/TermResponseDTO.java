@@ -13,7 +13,7 @@ public class TermResponseDTO {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class TermAgreeResultDTO{
-        Long memberId;
+        Long member_id;
         List<Long> agreeTermIds;
         List<Long> disagreeTermIds;
     }

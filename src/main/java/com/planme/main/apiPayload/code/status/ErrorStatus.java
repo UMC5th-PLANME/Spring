@@ -34,7 +34,15 @@ public enum ErrorStatus implements BaseErrorCode {
     CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND,"CATEGORY4001","카테고리가 존재하지 않습니다"),
 
     //페이지 관련
-    PAGE_NOT_VALID(HttpStatus.BAD_REQUEST, "PAGE4001","유효하지 않은 페이지 요청입니다.")
+    PAGE_NOT_VALID(HttpStatus.BAD_REQUEST, "PAGE4001","유효하지 않은 페이지 요청입니다."),
+
+    //meStory 관련
+    MESTORY_MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, "MESTORY4001", "존재하지 않는 MEMBER_ID 입니다"),
+    MESTORY_REQUEST_FORM_ERROR(HttpStatus.NOT_FOUND, "MESTORY4002", "잘못된 요청 형식입니다"),
+    MESTORY_FOCUS_SETTING_NOT_FOUND(HttpStatus.NOT_FOUND, "MESTORY4003", "FOCUS 설정이 존재하지 않습니다"),
+
+
+
     ;
 
 

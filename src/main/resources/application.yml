@@ -27,7 +27,6 @@ spring:
             client-secret: ${KAKAO_SECRET}
             authorization-grant-type: authorization_code
             client-name: plan_me
-            redirect-uri: http://localhost:8080/login/oauth2/code/kakao
             scope: profile_nickname,profile_image, account_email
 
         provider:
@@ -46,3 +45,16 @@ logging:
     org.hibernate:
       type.descriptor.sql: trace #show parameter binding
       SQL: DEBUG
+
+cloud:
+  aws:
+    credentials:
+      access-key: ${AWS_ACCESS_KEY}
+      secret-key: ${AWS_SECRET_KEY}
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+    s3:
+      bucket: planme-profile
+
