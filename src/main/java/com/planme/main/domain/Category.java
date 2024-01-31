@@ -34,15 +34,18 @@ public class Category extends BaseEntity {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    @Builder.Default
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Schedule> scheduleList = new ArrayList<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<MeContent> meContentList = new ArrayList<>();
 
     @OneToOne(mappedBy = "category", cascade = CascadeType.ALL)
     private Focus focus;
 
+    @Builder.Default
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<MeStoryFocus> meStoryFocusList = new ArrayList<>();
 
