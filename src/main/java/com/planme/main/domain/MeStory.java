@@ -20,5 +20,6 @@ public class MeStory extends BaseEntity {
     private Long id;
 
     @OneToMany(mappedBy = "meStory", cascade = CascadeType.ALL)
+    @Builder.Default
     private List<MeContent> meContentList = new ArrayList<>();
 }

@@ -23,6 +23,11 @@ public enum SuccessStatus implements BaseCode {
     //이미지 관련 응답
     IMAGE_FOUND(HttpStatus.OK, "IMAGE2001","서버에 이미지 저장 성공"),
 
+    // 스케줄 관련 응답
+    SCHEDULE_FOUND(HttpStatus.OK, "SCHEDULE2002", "스케줄 조회 성공입니다."),
+    SCHEDULE_UPDATE(HttpStatus.OK, "SCHEDULE2003", "스케줄 수정 성공입니다."),
+    SCHEDULE_DELETE(HttpStatus.OK, "SCHEDULE2004", "스케줄 삭제 성공입니다."),
+
     // 카테고리 관련 응답
     CATEGORY_CREATED(HttpStatus.OK,"CATEGORY2001","카테고리가 추가되었습니다."),
     CATEGORY_DELETED(HttpStatus.OK,"CATEGORY2002","카테고리가 삭제되었습니다."),

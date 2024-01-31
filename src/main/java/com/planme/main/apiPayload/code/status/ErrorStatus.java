@@ -33,6 +33,7 @@ public enum ErrorStatus implements BaseErrorCode {
     //  카테고리 관련
     CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND,"CATEGORY4001","카테고리가 존재하지 않습니다"),
 
+    SCHEDULE_NOT_FOUND(HttpStatus.NOT_FOUND, "SCHEDULE4001", "스케줄이 없습니다."),
     //페이지 관련
     PAGE_NOT_VALID(HttpStatus.BAD_REQUEST, "PAGE4001","유효하지 않은 페이지 요청입니다."),
 
