@@ -1,7 +1,6 @@
 package com.planme.main.domain;
 
 import com.planme.main.domain.common.BaseEntity;
-import com.planme.main.domain.mapping.MeContent;
 import com.planme.main.web.dto.CategoryDTO.CategoryRequestDTO;
 import jakarta.persistence.*;
 import lombok.*;
@@ -37,10 +36,6 @@ public class Category extends BaseEntity {
     @Builder.Default
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Schedule> scheduleList = new ArrayList<>();
-
-    @Builder.Default
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    private List<MeContent> meContentList = new ArrayList<>();
 
     @OneToOne(mappedBy = "category", cascade = CascadeType.ALL)
     private Focus focus;
