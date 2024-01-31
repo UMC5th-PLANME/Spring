@@ -41,9 +41,11 @@ public class Member extends BaseEntity {
     @ColumnDefault("1")
     private int status; //  0: 비활성화, 1: 활성
 
+    @Builder.Default
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Category> categoryList = new ArrayList<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<TermsAgreement> termsAgreementList = new ArrayList<>();
 
