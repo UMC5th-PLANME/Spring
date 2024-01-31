@@ -28,14 +28,14 @@ public class MakeInitData {
                 .nickname("testMember1")
                 .email("test@test.com")
                 .loginType("false")
-                .status(true)
+                .status(1)
                 .build();
         memberRepository.save(member1);
 
         Category category1 = Category.builder()
                 .name("TestCategory1")
                 .emoticon(":)")
-                .color("Red")
+                .color(1)
                 .meStoryHidden(false)
                 .member(memberRepository.findByNickname("testMember1"))
                 .build();
