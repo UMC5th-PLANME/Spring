@@ -1,8 +1,8 @@
 package com.planme.main.service.scheduleService;
 
 import com.planme.main.domain.Schedule;
-import com.planme.main.web.dto.ScheduleRequestDTO;
-import com.planme.main.web.dto.ScheduleResponseDTO;
+import com.planme.main.web.dto.ScheduleDTO.ScheduleRequestDTO;
+import com.planme.main.web.dto.ScheduleDTO.ScheduleResponseDTO;
 import jakarta.servlet.http.HttpServletRequest;
 
 public interface ScheduleCommandService {

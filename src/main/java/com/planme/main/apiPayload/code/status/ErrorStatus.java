@@ -42,8 +42,8 @@ public enum ErrorStatus implements BaseErrorCode {
     MESTORY_REQUEST_FORM_ERROR(HttpStatus.NOT_FOUND, "MESTORY4002", "잘못된 요청 형식입니다"),
     MESTORY_FOCUS_SETTING_NOT_FOUND(HttpStatus.NOT_FOUND, "MESTORY4003", "FOCUS 설정이 존재하지 않습니다"),
 
-
-
+    //  토큰 관련
+    TOKEN_EXPIRED(HttpStatus.BAD_REQUEST,"TOKEN4001","토큰이 만료 되었습니다.")
     ;
 
 

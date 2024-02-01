@@ -1,4 +1,4 @@
-package com.planme.main.web.dto;
+package com.planme.main.web.dto.ScheduleDTO;
 
 import com.planme.main.domain.enums.Repeat;
 import lombok.Getter;
