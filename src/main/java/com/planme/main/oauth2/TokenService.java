@@ -6,6 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -14,7 +15,8 @@ import java.util.Date;
 
 @Service
 public class TokenService {
-    private String secretKey = "token-secret-key";  //시크릿 키
+    @Value("${JWT_SECRET_KEY}")
+    private String secretKey;  //시크릿 키
 
     @PostConstruct
     protected void init() {
