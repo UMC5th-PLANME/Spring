@@ -3,10 +3,12 @@ package com.planme.main;
 import com.planme.main.domain.Member;
 import com.planme.main.domain.Category;
 import com.planme.main.domain.Schedule;
+import com.planme.main.domain.Terms;
 import com.planme.main.domain.enums.Repeat;
 import com.planme.main.repository.MemberRepository;
 import com.planme.main.repository.CategoryRepository;
 import com.planme.main.repository.ScheduleRepository;
+import com.planme.main.repository.TermsRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -21,6 +23,7 @@ public class MakeInitData {
     private final MemberRepository memberRepository;
     private final CategoryRepository categoryRepository;
     private final ScheduleRepository scheduleRepository;
+    private final TermsRepository termsRepository;
 
     @PostConstruct
     public void makeTestMemberAndCategoryAndSchedule() {
@@ -55,6 +58,21 @@ public class MakeInitData {
                 .category(category1)
                 .build();
         scheduleRepository.save(schedule1);
+
+        Terms serviceTerm = Terms.builder()
+                .id(1L)
+                .name("서비스 이용약관")
+                .required(true)
+                .build();
+
+        Terms infoTerm = Terms.builder()
+                .id(2L)
+                .name("개인정보 수집 및 이용")
+                .required(true)
+                .build();
+
+        termsRepository.save(serviceTerm);
+        termsRepository.save(infoTerm);
     }
 
 }
