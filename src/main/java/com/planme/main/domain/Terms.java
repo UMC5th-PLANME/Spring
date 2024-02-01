@@ -3,16 +3,14 @@ package com.planme.main.domain;
 import com.planme.main.domain.common.BaseEntity;
 import com.planme.main.domain.mapping.TermsAgreement;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class Terms extends BaseEntity {
