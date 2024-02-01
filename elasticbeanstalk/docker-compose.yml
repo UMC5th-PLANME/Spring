@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  backend:
+    image: "590183831369.dkr.ecr.ap-northeast-2.amazonaws.com/plan-me-ecr:latest"
+    ports:
+      - "80:8080"
+    restart: "always"
