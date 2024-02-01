@@ -7,7 +7,6 @@ on:
   workflow_dispatch:
 
 env:
-  AWS_ECR_URL: 590183831369.dkr.ecr.ap-northeast-2.amazonaws.com/plan-me-ecr:latest
   AWS_REGION: ap-northeast-2
   EB_ENVIRONMENT_NAME: PlanMe-env-1
   EB_APPLICATION_NAME: PlanMe
@@ -58,7 +57,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-northeast-2
+          aws-region: ${{ env.AWS_REGION }}
 
       ## ECR 로그인
       - name: Login to Amazon ECR
@@ -68,8 +67,8 @@ jobs:
       - name: Build, tag, and push image to Amazon ECR
         run: |
           docker build -t plan-me-ecr .
-          docker tag plan-me-ecr:latest ${{ env.AWS_ECR_URL }}:latest
-          docker push ${{ env.AWS_ECR_URL }}:latest
+          docker tag plan-me-ecr:latest ${{ secrets.AWS_ECR_URL }}:latest
+          docker push ${{ secrets.AWS_ECR_URL }}:latest
 
       - name: Beanstalk Deploy
         uses: einaregilsson/beanstalk-deploy@ebe3476a4ce991d54336935e75e78dd9d86f9408
