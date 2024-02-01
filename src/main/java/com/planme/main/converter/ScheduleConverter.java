@@ -1,9 +1,8 @@
 package com.planme.main.converter;
 
 import com.planme.main.domain.Schedule;
-import com.planme.main.domain.enums.Repeat;
-import com.planme.main.web.dto.ScheduleRequestDTO;
-import com.planme.main.web.dto.ScheduleResponseDTO;
+import com.planme.main.web.dto.ScheduleDTO.ScheduleRequestDTO;
+import com.planme.main.web.dto.ScheduleDTO.ScheduleResponseDTO;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;

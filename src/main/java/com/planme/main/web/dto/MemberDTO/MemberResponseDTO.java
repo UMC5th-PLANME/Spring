@@ -51,4 +51,5 @@ public class MemberResponseDTO {
         private String accessToken;
         private String refreshToken;
     }
+
 }

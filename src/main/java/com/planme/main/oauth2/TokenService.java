@@ -24,8 +24,8 @@ public class TokenService {
     }
 
     public Token generateToken(String uid, String role) {
-        long tokenPeriod = 1000L * 60L * 60L * 2L;  //  2시간
-        long refreshPeriod = 1000L * 60L * 60L * 24L * 30L * 3L;
+        long tokenPeriod = 1000L * 60L * 60L * 2L;
+        long refreshPeriod = 1000L * 60L * 60L * 24L * 30L;
 
         Claims claims = Jwts.claims().setSubject(uid);
         claims.put("role", role);

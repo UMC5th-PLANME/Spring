@@ -35,8 +35,6 @@ public class CategoryRestController {
     }
 
     /**
-     * TODO: 로그인 API 구현 완료시 HttpServletRequest parameter 추가
-     *
      * @param id
      * @return
      */
