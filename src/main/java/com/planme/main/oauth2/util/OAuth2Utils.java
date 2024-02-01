@@ -15,6 +15,7 @@ public class OAuth2Utils {
 
     public static Attributes getSubAttributes(OAuth2User oAuth2User, String subAttributesKey) {
 
+        @SuppressWarnings("unchecked")
         Map<String, Object> subAttributes = (Map<String, Object>) oAuth2User.getAttributes().get(subAttributesKey);
         return Attributes.builder()
                 .subAttributes(subAttributes)
@@ -23,7 +24,9 @@ public class OAuth2Utils {
 
     public static Attributes getOtherAttributes(OAuth2User oAuth2User, String subAttributesKey, String otherAttributesKey) {
 
+        @SuppressWarnings("unchecked")
         Map<String, Object> subAttributes = (Map<String, Object>) oAuth2User.getAttributes().get(subAttributesKey);
+        @SuppressWarnings("unchecked")
         Map<String, Object> otherAttributes = (Map<String, Object>) subAttributes.get(otherAttributesKey);
 
         return Attributes.builder()
