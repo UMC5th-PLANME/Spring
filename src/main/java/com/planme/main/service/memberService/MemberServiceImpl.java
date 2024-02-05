@@ -96,7 +96,7 @@ public class MemberServiceImpl implements MemberService{
                 .status(1)
                 .build();
         if(memberRepository.existsByEmail(member.getEmail())){
-            return member;
+            return memberRepository.findByEmail(member.getEmail()).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
         }
         else{
             return memberRepository.save(member);
