@@ -31,17 +31,9 @@ jobs:
       - name: Set Yaml
         uses: microsoft/variable-substitution@v1
         with:
-          files: ./src/main/resources/application.yml
+          files: ./elasticbeanstalk/docker-compose.yml
         env:
-          spring.datasource.url: ${{ secrets.DB_HOST }}
-          spring.datasource.username: ${{ secrets.DB_USER }}
-          spring.datasource.password: ${{ secrets.DB_PASSWORD }}
-          spring.security.oauth2.client.registration.google.client-id: ${{ secrets.GOOGLE_ID }}
-          spring.security.oauth2.client.registration.google.client-secret: ${{ secrets.GOOGLE_SECRET }}
-          spring.security.oauth2.client.registration.kakao.client-id: ${{ secrets.KAKAO_ID }}
-          spring.security.oauth2.client.registration.kakao.client-secret: ${{ secrets.KAKAO_SECRET }}
-          cloud.aws.credentials.access-key: ${{ secrets.AWS_ACCESS_KEY }}
-          cloud.aws.credentials.secret-key: ${{ secrets.AWS_SECRET_KEY }}
+          services.backend.environment.JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
 
       ## gradlew 권한부여
       - name: Grant execute permission for gradlew
@@ -55,8 +47,8 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
       ## ECR 로그인
@@ -73,8 +65,8 @@ jobs:
       - name: Beanstalk Deploy
         uses: einaregilsson/beanstalk-deploy@ebe3476a4ce991d54336935e75e78dd9d86f9408
         with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
           region: ${{ env.AWS_REGION }}
           environment_name: ${{ env.EB_ENVIRONMENT_NAME }}
           application_name: ${{ env.EB_APPLICATION_NAME }}
