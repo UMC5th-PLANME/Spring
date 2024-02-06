@@ -29,7 +29,7 @@ public class MemberResponseDTO {
     public static class UpdateProfileDTO{
         private Long member_id;
         private String name;
-        private String image_url;
+        private String profile_image;
         private LocalDateTime updated_at;
     }
     @Builder

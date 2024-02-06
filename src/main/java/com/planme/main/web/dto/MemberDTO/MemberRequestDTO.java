@@ -6,7 +6,7 @@ public class MemberRequestDTO {
     @Getter
     public static class UpdateProfileDTO{
         private String name;
-        private String image_url;
+        private String profile_image;
     }
 
     @Getter

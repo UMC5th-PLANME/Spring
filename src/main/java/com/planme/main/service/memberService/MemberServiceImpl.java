@@ -67,7 +67,7 @@ public class MemberServiceImpl implements MemberService{
         String email = tokenService.getUid(tokenService.getJwtFromHeader(httpServletRequest));
         Member member = memberRepository.findByEmail(email).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
         if(updateProfileDTO.getName() != null) member.setNickname(updateProfileDTO.getName());
-        if(updateProfileDTO.getImage_url() != null) member.setProfileImage(updateProfileDTO.getImage_url());
+        if(updateProfileDTO.getProfile_image() != null) member.setProfileImage(updateProfileDTO.getProfile_image());
         return member;
     }
 

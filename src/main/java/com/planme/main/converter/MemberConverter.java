@@ -30,7 +30,7 @@ public class MemberConverter {
         return MemberResponseDTO.UpdateProfileDTO.builder()
                 .member_id(member.getId())
                 .updated_at(member.getUpdatedAt())
-                .image_url(member.getProfileImage())
+                .profile_image(member.getProfileImage())
                 .name(member.getNickname())
                 .build();
     }
