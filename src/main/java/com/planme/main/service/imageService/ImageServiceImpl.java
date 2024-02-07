@@ -26,7 +26,6 @@ public class ImageServiceImpl implements ImageService{
         ObjectMetadata omd = new ObjectMetadata();
         omd.setContentType(multipartFile.getContentType());
         omd.setContentLength(multipartFile.getSize());
-        omd.setHeader("filename", multipartFile.getOriginalFilename());
 
         // Copy file to the target location (Replacing existing file with the same name)
         amazonS3.putObject(new PutObjectRequest(bucket + "/" + dirName, fileName,
