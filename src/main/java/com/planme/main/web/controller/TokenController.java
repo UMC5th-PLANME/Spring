@@ -39,23 +39,6 @@ public class TokenController {
         throw new RuntimeException("유효한 refresh 토큰이 아닙니다.");
     }
 
-//    @GetMapping("/token/refresh")
-//    public String refreshAuth2(HttpServletRequest request, HttpServletResponse response) {
-//        String token = request.getHeader("Refresh");
-//
-//        if (token != null && tokenService.verifyToken(token)) {
-//            String email = tokenService.getUid(token);
-//            Token newToken = tokenService.generateToken(email, "USER");
-//
-//            response.addHeader("Auth", newToken.getToken());
-//            response.addHeader("Refresh", newToken.getRefreshToken());
-//            response.setContentType("application/json;charset=UTF-8");
-//
-//            return "New Token Created";
-//        }
-//
-//        throw new RuntimeException();
-//    }
 
     @GetMapping("/token/test")
     public String test(HttpServletRequest request) {
