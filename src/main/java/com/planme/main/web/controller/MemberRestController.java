@@ -36,7 +36,7 @@ public class MemberRestController {
         return ApiResponse.of(SuccessStatus.MEMBER_FOUND,memberConverter.toGetMemberResultDTO(member));
     }
 
-    @PostMapping("/login")
+    @PostMapping("/join")
     public ApiResponse<MemberResponseDTO.JoinResultDTO> joinMember(@RequestBody MemberRequestDTO.JoinMemberDTO joinMemberDTO){
         Member member = memberService.joinMember(joinMemberDTO);
         Token token = tokenService.generateToken(member.getEmail(), "USER");
@@ -59,5 +59,11 @@ public class MemberRestController {
         Member member = memberService.deleteMember(httpServletRequest);
         return ApiResponse.of(SuccessStatus.MEMBER_DELETE, memberConverter.toDeleteResultDTO(member));
     }
+
+    @GetMapping("/login")
+    public ApiResponse<MemberResponseDTO.LoginResultDTO> loginMember(HttpServletRequest httpServletRequest) {
+        return ApiResponse.of(SuccessStatus.MEMBER_LOGIN, memberService.loginMember(httpServletRequest));
+    }
+
 }
 

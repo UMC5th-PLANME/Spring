@@ -7,6 +7,9 @@ import com.planme.main.web.dto.MemberDTO.MemberResponseDTO;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 @Component
 public class MemberConverter {
     public MemberDTO toMemberDTO(OAuth2User oAuth2User) {
@@ -60,6 +63,13 @@ public class MemberConverter {
                 .created_at(member.getCreatedAt())
                 .accessToken(token.getToken())
                 .refreshToken(token.getRefreshToken())
+                .build();
+    }
+
+    public MemberResponseDTO.LoginResultDTO toLoginResultDTO(Member member, LocalDateTime date) {
+        return MemberResponseDTO.LoginResultDTO.builder()
+                .member_id(member.getId())
+                .expiration(date)
                 .build();
     }
 }

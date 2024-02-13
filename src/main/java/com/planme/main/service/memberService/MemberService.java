@@ -3,6 +3,7 @@ package com.planme.main.service.memberService;
 import com.planme.main.domain.Member;
 import com.planme.main.oauth2.user.ProviderUser;
 import com.planme.main.web.dto.MemberDTO.MemberRequestDTO;
+import com.planme.main.web.dto.MemberDTO.MemberResponseDTO;
 import jakarta.servlet.http.HttpServletRequest;
 
 public interface MemberService {
@@ -12,4 +13,6 @@ public interface MemberService {
     Member updateMember(HttpServletRequest httpServletRequest, MemberRequestDTO.UpdateProfileDTO updateProfileDTO);
     Member deleteMember(HttpServletRequest httpServletRequest);
     Member joinMember(MemberRequestDTO.JoinMemberDTO joinMemberDTO);
+
+    MemberResponseDTO.LoginResultDTO loginMember(HttpServletRequest httpServletRequest);
 }
