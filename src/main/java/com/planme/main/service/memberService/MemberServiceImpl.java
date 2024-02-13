@@ -2,16 +2,22 @@ package com.planme.main.service.memberService;
 
 import com.planme.main.apiPayload.code.status.ErrorStatus;
 import com.planme.main.apiPayload.exception.handler.MemberHandler;
+import com.planme.main.converter.MemberConverter;
 import com.planme.main.domain.Member;
 import com.planme.main.oauth2.TokenService;
 import com.planme.main.oauth2.user.ProviderUser;
 import com.planme.main.repository.MemberRepository;
 import com.planme.main.web.dto.MemberDTO.MemberRequestDTO;
+import com.planme.main.web.dto.MemberDTO.MemberResponseDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 
 @Service
 @Slf4j
@@ -21,6 +27,7 @@ public class MemberServiceImpl implements MemberService{
 
     private final MemberRepository memberRepository;
     private final TokenService tokenService;
+    private final MemberConverter memberConverter;
 
     /**
      * oAuth2에 사용
@@ -101,5 +108,17 @@ public class MemberServiceImpl implements MemberService{
         else{
             return memberRepository.save(member);
         }
+    }
+
+    @Override
+    @Transactional
+    public MemberResponseDTO.LoginResultDTO loginMember(HttpServletRequest httpServletRequest) {
+        String token = tokenService.getJwtFromHeader(httpServletRequest);
+        String email = tokenService.getUid(token);
+        Date date = tokenService.getExpiration(token);
+        LocalDateTime expiration = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
+        Member member = memberRepository.findByEmail(email).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
+
+        return memberConverter.toLoginResultDTO(member, expiration);
     }
 }

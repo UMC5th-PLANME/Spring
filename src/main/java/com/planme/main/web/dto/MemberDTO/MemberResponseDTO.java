@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class MemberResponseDTO {
     @Builder
@@ -52,4 +53,12 @@ public class MemberResponseDTO {
         private String refreshToken;
     }
 
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class LoginResultDTO {
+        private Long member_id;
+        private LocalDateTime expiration;
+    }
 }

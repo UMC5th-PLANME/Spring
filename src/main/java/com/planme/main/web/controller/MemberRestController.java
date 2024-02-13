@@ -60,7 +60,10 @@ public class MemberRestController {
         return ApiResponse.of(SuccessStatus.MEMBER_DELETE, memberConverter.toDeleteResultDTO(member));
     }
 
-    
+    @GetMapping("/login")
+    public ApiResponse<MemberResponseDTO.LoginResultDTO> loginMember(HttpServletRequest httpServletRequest) {
+        return ApiResponse.of(SuccessStatus.MEMBER_LOGIN, memberService.loginMember(httpServletRequest));
+    }
 
 }
 
