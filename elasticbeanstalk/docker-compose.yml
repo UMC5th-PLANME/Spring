@@ -5,3 +5,5 @@ services:
     ports:
       - "80:8080"
     restart: "always"
+    environment:
+      JWT_SECRET_KEY: ${ JWT_SECRET_KEY }

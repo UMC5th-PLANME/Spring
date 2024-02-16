@@ -59,6 +59,8 @@ public class MemberResponseDTO {
     @AllArgsConstructor
     public static class LoginResultDTO {
         private Long member_id;
+        private String accessToken;
+        private String refreshToken;
         private LocalDateTime expiration;
     }
 }

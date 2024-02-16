@@ -4,6 +4,7 @@ import com.planme.main.apiPayload.code.status.ErrorStatus;
 import com.planme.main.apiPayload.exception.handler.MemberHandler;
 import com.planme.main.converter.MemberConverter;
 import com.planme.main.domain.Member;
+import com.planme.main.oauth2.Token;
 import com.planme.main.oauth2.TokenService;
 import com.planme.main.oauth2.user.ProviderUser;
 import com.planme.main.repository.MemberRepository;
@@ -113,12 +114,14 @@ public class MemberServiceImpl implements MemberService{
     @Override
     @Transactional
     public MemberResponseDTO.LoginResultDTO loginMember(HttpServletRequest httpServletRequest) {
-        String token = tokenService.getJwtFromHeader(httpServletRequest);
-        String email = tokenService.getUid(token);
-        Date date = tokenService.getExpiration(token);
-        LocalDateTime expiration = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
+        String givenToken = tokenService.getJwtFromHeader(httpServletRequest);
+        String email = tokenService.getUid(givenToken);
         Member member = memberRepository.findByEmail(email).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
+        Token newToken = tokenService.generateToken(member.getEmail(), "USER");
 
-        return memberConverter.toLoginResultDTO(member, expiration);
+        Date date = tokenService.getExpiration(newToken.getToken());
+        LocalDateTime expiration = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
+
+        return memberConverter.toLoginResultDTO(member, newToken,expiration);
     }
 }

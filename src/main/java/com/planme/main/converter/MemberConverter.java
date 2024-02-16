@@ -66,9 +66,11 @@ public class MemberConverter {
                 .build();
     }
 
-    public MemberResponseDTO.LoginResultDTO toLoginResultDTO(Member member, LocalDateTime date) {
+    public MemberResponseDTO.LoginResultDTO toLoginResultDTO(Member member, Token token,LocalDateTime date) {
         return MemberResponseDTO.LoginResultDTO.builder()
                 .member_id(member.getId())
+                .accessToken(token.getToken())
+                .refreshToken(token.getRefreshToken())
                 .expiration(date)
                 .build();
     }
