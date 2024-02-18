@@ -48,9 +48,10 @@ public enum SuccessStatus implements BaseCode {
 
 
     //  Token 관련 응답
-    TOKEN_REFRESHED(HttpStatus.OK,"TOKEN2001", "토큰이 갱신되었습니다.")
+    TOKEN_REFRESHED(HttpStatus.OK,"TOKEN2001", "토큰이 갱신되었습니다."),
 
-
+    // Alarm 관련 응답
+    ALARM_FOUND(HttpStatus.OK, "ALARM2001", "알람 조회 성공입니다.")
 
     ;
 
