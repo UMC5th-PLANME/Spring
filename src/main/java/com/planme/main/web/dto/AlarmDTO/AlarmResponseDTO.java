@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class AlarmResponseDTO {
@@ -24,5 +25,14 @@ public class AlarmResponseDTO {
     public static class GetAlarmResultDTO{
         private Long id;
         private Long schedule_id;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class DeleteAlarmResultDTO{
+        Long schedule_id;
+        LocalDateTime deleteAt;
     }
 }

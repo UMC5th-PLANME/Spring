@@ -1,15 +1,23 @@
 package com.planme.main.service.alarmService;
 
+import com.planme.main.apiPayload.code.status.ErrorStatus;
+import com.planme.main.apiPayload.exception.handler.MemberHandler;
+import com.planme.main.apiPayload.exception.handler.ScheduleHandler;
 import com.planme.main.domain.Alarm;
 import com.planme.main.domain.Member;
 import com.planme.main.domain.Schedule;
 import com.planme.main.oauth2.TokenService;
 import com.planme.main.repository.AlarmRepository;
+import com.planme.main.repository.MemberRepository;
 import com.planme.main.repository.ScheduleRepository;
-import com.planme.main.web.dto.AlarmDTO.AlarmRequestDTO;
+import com.planme.main.web.dto.AlarmDTO.AlarmResponseDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -19,8 +27,8 @@ public class AlarmCommandServiceImpl implements AlarmCommandService{
     private final TokenService tokenService;
     private final AlarmRepository alarmRepository;
 
-    public Alarm createAlarm(HttpServletRequest httpServletRequest, AlarmRequestDTO.CreateAlarmDto request){
-        Long scheduleId = request.getSchedule_id();
+    @Override
+    public Alarm createAlarm(HttpServletRequest httpServletRequest, Long scheduleId){
         if (scheduleId == null){
             throw new IllegalArgumentException("스케줄 ID가 제공되지 않았습니다.");
         }
@@ -39,5 +47,17 @@ public class AlarmCommandServiceImpl implements AlarmCommandService{
 
         return alarm;
     }
+
+    @Override
+    @Transactional
+    public AlarmResponseDTO.DeleteAlarmResultDTO deleteAlarms(HttpServletRequest httpServletRequest, Long schedule_id){
+        List<Alarm> alarms = alarmRepository.findAlarmsByScheduleId(schedule_id);
+        alarmRepository.deleteInBatch(alarms);
+        return AlarmResponseDTO.DeleteAlarmResultDTO.builder()
+                .schedule_id(schedule_id)
+                .deleteAt(LocalDateTime.now())
+                .build();
+    }
+
 }
 

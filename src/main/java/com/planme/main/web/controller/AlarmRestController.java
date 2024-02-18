@@ -22,9 +22,9 @@ public class AlarmRestController {
     private final AlarmCommandService alarmCommandService;
     private final AlarmQueryService alarmQueryService;
 
-    @PostMapping
-    public ApiResponse<AlarmResponseDTO.CreateAlarmResultDTO> createAlarm(HttpServletRequest httpServletRequest, @RequestBody AlarmRequestDTO.CreateAlarmDto request){
-        Alarm alarm = alarmCommandService.createAlarm(httpServletRequest, request);
+    @PostMapping("/{schedule_id}")
+    public ApiResponse<AlarmResponseDTO.CreateAlarmResultDTO> createAlarm(HttpServletRequest httpServletRequest, @PathVariable(name = "schedule_id") Long id){
+        Alarm alarm = alarmCommandService.createAlarm(httpServletRequest, id);
         return ApiResponse.onSuccess(AlarmConverter.toCreateResultDTO(alarm));
     }
 
@@ -33,6 +33,11 @@ public class AlarmRestController {
     public ApiResponse<List<AlarmResponseDTO.GetAlarmResultDTO>> getAlarm(HttpServletRequest httpServletRequest, @PathVariable(name = "schedule_id") Long id){
         List<Alarm> alarmList = alarmQueryService.getAlarmList(httpServletRequest, id);
         return ApiResponse.of(SuccessStatus.ALARM_FOUND, AlarmConverter.toGetAlarmListDTO(alarmList));
+    }
+
+    @DeleteMapping("/{schedule_id}")
+    public ApiResponse<AlarmResponseDTO.DeleteAlarmResultDTO> deleteAlarms(HttpServletRequest httpServletRequest, @PathVariable(name = "schedule_id") Long id){
+        return ApiResponse.of(SuccessStatus.ALARM_DELETE, alarmCommandService.deleteAlarms(httpServletRequest, id));
     }
 
 }
