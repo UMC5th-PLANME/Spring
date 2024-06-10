@@ -8,10 +8,10 @@
 <br/>
 
 ### ERD
-![PLAN ME _ ERD](https://github.com/J-neat/PlanMe-Spring/assets/115057370/68bb9d1f-5ae1-48f2-ad5b-302748c71ade)
+![PLAN ME _ ERD](https://github.com/UMC5th-PLANME/Spring/assets/115057370/cac6bc6a-8022-4f0b-b002-a87cb76c78d1)
 
 ### CICD 
-<img width="640" alt="PlanME-아키텍처" src="https://github.com/J-neat/PlanMe-Spring/assets/115057370/48b8f0a1-578d-4928-958e-9ca7c7a8a435">
+<img width="640" alt="PlanME-아키텍처" src="https://github.com/UMC5th-PLANME/Spring/assets/115057370/a9f3aa9d-db2c-4233-b8b4-c036efbb5205">
 
 
 ### 사용된도구
